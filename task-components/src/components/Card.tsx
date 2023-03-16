@@ -20,7 +20,9 @@ class Card extends React.Component<CardProps> {
   render() {
     return (
       <div className="card" key={this.props.card.id}>
-        <img className="card-image" src={this.props.card.image} alt={this.props.card.title} />
+        <div className="card-image">
+          <img className="card-picture" src={this.props.card.image} alt={this.props.card.title} />
+        </div>
         <div className="card-info">
           <h3 className="card-title">{this.props.card.title}</h3>
           <h4 className="card-designer">By {this.props.card.designer}</h4>
