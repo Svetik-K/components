@@ -1,14 +1,21 @@
 import React from 'react';
-import cards from '../data/cards.json';
-import Card from './Card';
+import Card, { CardContent } from './Card';
 import '../styles/cardsList.css';
 
-class CardsList extends React.Component {
+type CardsListProps = {
+  cards: CardContent[] | [];
+};
+class CardsList extends React.Component<CardsListProps> {
   render() {
-    const cardsToRender = cards.map((card) => {
+    const cardsToRender = this.props.cards.map((card) => {
       return <Card card={card} key={card.id}></Card>;
     });
-    return <div className="cards-list">{cardsToRender}</div>;
+    const content = cardsToRender?.length ? (
+      cardsToRender
+    ) : (
+      <div className="no-matches">No matches found</div>
+    );
+    return <div className="cards-list">{content}</div>;
   }
 }
 

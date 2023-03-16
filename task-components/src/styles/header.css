@@ -1,6 +1,7 @@
 header {
-  display: 'flex';
-  justify-content: 'space-between';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 30px 20px;
   background-color: #000000;

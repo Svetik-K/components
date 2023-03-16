@@ -1,0 +1,19 @@
+.search-field {
+  width: 300px;
+  height: 30px;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.button-search {
+	width: 100px;
+	height: 30px;
+	border-radius: 5px;
+	margin-left: 20px;
+	background-color: transparent;
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+}
