@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "image": "./assets/images/one.jpg",
+    "title": "November vibes",
+    "designer" : "H. Emre",
+    "categories": "city, autumn, tram",
+    "likes": "10318",
+    "views": "16006"
+  },
+  {
+    "id": 2,
+    "image": "./assets/images/two.jpg",
+    "title": "Two White Street Lights",
+    "designer" : "Kaique Rocha",
+    "categories": "city, suburbs, graffity",
+    "likes": "5328",
+    "views": "8655"
+  },
+  {
+    "id": 3,
+    "image": "./assets/images/three.jpg",
+    "title": "NY City",
+    "designer" : "Nout Gons",
+    "categories": "city, taxi, America",
+    "likes": "830",
+    "views": "1615"
+  },
+  {
+    "id": 4,
+    "image": "./assets/images/four.jpg",
+    "title": "Woman in Illuminated City",
+    "designer" : "Pixabay",
+    "categories": "city, autumn, rain, illuminations",
+    "likes": "14744",
+    "views": "18922"
+  },
+  {
+    "id": 5,
+    "image": "./assets/images/one.jpg",
+    "title": "November vibes",
+    "designer" : "H. Emre",
+    "categories": "city, autumn, tram",
+    "likes": "10318",
+    "views": "16006"
+  },
+  {
+    "id": 6,
+    "image": "./assets/images/two.jpg",
+    "title": "Two White Street Lights",
+    "designer" : "Kaique Rocha",
+    "categories": "city, suburbs, graffity",
+    "likes": "5328",
+    "views": "8655"
+  },
+  {
+    "id": 7,
+    "image": "./assets/images/three.jpg",
+    "title": "NY City",
+    "designer" : "Nout Gons",
+    "categories": "city, taxi, America",
+    "likes": "830",
+    "views": "1615"
+  },
+  {
+    "id": 8,
+    "image": "./assets/images/four.jpg",
+    "title": "Woman in Illuminated City",
+    "designer" : "Pixabay",
+    "categories": "city, autumn, rain, illuminations",
+    "likes": "14744",
+    "views": "18922"
+  }
+]

@@ -8,7 +8,7 @@ type ButtonProps = {
 
 class Button extends React.Component<ButtonProps> {
   render() {
-    const className = `button-${this.props.name}`;
+    const className = `button button-${this.props.name}`;
     return <button className={className}>{this.props.children}</button>;
   }
 }
