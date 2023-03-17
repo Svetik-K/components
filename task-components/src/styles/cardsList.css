@@ -8,3 +8,8 @@
   column-gap: 30px;
   row-gap: 20px;
 }
+
+.no-matches {
+  font-size: 2rem;
+  font-weight: 500;
+}

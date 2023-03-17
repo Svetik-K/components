@@ -4,6 +4,7 @@ type ButtonProps = {
   name: string;
   type?: string;
   children?: React.ReactNode;
+  onClick?: (e: Event) => void;
 };
 
 class Button extends React.Component<ButtonProps> {
