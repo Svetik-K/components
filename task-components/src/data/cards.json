@@ -37,38 +37,74 @@
   },
   {
     "id": 5,
-    "image": "./assets/images/one.jpg",
-    "title": "November vibes",
-    "designer" : "H. Emre",
-    "categories": "city, autumn, tram",
-    "likes": "10318",
-    "views": "16006"
+    "image": "./assets/images/freedom.jpg",
+    "title": "Freedom",
+    "designer" : "Myriam Chou",
+    "categories": "freedom, woman, road",
+    "likes": "5620",
+    "views": "6382"
   },
   {
     "id": 6,
-    "image": "./assets/images/two.jpg",
-    "title": "Two White Street Lights",
-    "designer" : "Kaique Rocha",
-    "categories": "city, suburbs, graffity",
-    "likes": "5328",
-    "views": "8655"
+    "image": "./assets/images/alley.jpg",
+    "title": "Night alley",
+    "designer" : "Mike Peterson",
+    "categories": "alley, street, night, town, urban",
+    "likes": "1460",
+    "views": "2058"
   },
   {
     "id": 7,
-    "image": "./assets/images/three.jpg",
-    "title": "NY City",
-    "designer" : "Nout Gons",
-    "categories": "city, taxi, America",
-    "likes": "830",
-    "views": "1615"
+    "image": "./assets/images/paris.jpg",
+    "title": "Somewhere in Paris",
+    "designer" : "Elmondo",
+    "categories": "path, pavement, street, old town",
+    "likes": "1315",
+    "views": "1577"
   },
   {
     "id": 8,
-    "image": "./assets/images/four.jpg",
-    "title": "Woman in Illuminated City",
-    "designer" : "Pixabay",
-    "categories": "city, autumn, rain, illuminations",
-    "likes": "14744",
-    "views": "18922"
+    "image": "./assets/images/pedestrians.jpg",
+    "title": "Morning's pedestrians",
+    "designer" : "Liam Nordquist",
+    "categories": "pedestrians, crossing, traffic",
+    "likes": "6830",
+    "views": "7844"
+  },
+  {
+    "id": 9,
+    "image": "./assets/images/lost-place.jpg",
+    "title": "Lost place",
+    "designer" : "Michael Gaida",
+    "categories": "old, decay, ruins, factory",
+    "likes": "7428",
+    "views": "9343"
+  },
+  {
+    "id": 10,
+    "image": "./assets/images/bridge.jpg",
+    "title": "George Washingtons Bridge",
+    "designer" : "David Mark",
+    "categories": "bridge, New York, buildings, architecture",
+    "likes": "12670",
+    "views": "15344"
+  },
+  {
+    "id": 11,
+    "image": "./assets/images/houses.jpg",
+    "title": "Venice houses",
+    "designer" : "Pfuderi",
+    "categories": "boats, street, canal, town, Venice",
+    "likes": "4615",
+    "views": "6725"
+  },
+  {
+    "id": 12,
+    "image": "./assets/images/tram.jpg",
+    "title": "Lost in snow",
+    "designer" : "Simon Berger",
+    "categories": "tram, road, snow",
+    "likes": "18450",
+    "views": "22714"
   }
 ]

@@ -41,7 +41,7 @@ class SearchBar extends React.Component {
             value={this.state.barValue}
             onChange={this.handleChange.bind(this)}
           />
-          {/* <Button name="search">Search</Button> */}
+          <Button name="search"></Button>
         </div>
         <CardsList cards={this.state.cards}></CardsList>
       </div>
