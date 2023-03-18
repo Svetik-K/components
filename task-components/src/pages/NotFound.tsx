@@ -1,9 +1,15 @@
 import React from 'react';
 import Header from '../components/Header';
+import '../styles/pages.css';
 
 class NotFound extends React.Component {
   render() {
-    return <Header name="Sorry... Something went wrong..."></Header>;
+    return (
+      <div>
+        <Header name="Oops... Something went wrong..."></Header>
+        <main className="error-page-main"></main>
+      </div>
+    );
   }
 }
 
