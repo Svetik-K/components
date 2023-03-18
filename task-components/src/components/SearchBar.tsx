@@ -3,12 +3,6 @@ import Button from './Button';
 import '../styles/search.css';
 import CardsList from './CardsList';
 import allCards from '../data/cards.json';
-import { CardContent } from './Card';
-
-type State = {
-  searchValue: string;
-  cards: CardContent[] | [];
-};
 
 class SearchBar extends React.Component {
   state = {

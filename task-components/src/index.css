@@ -5,6 +5,7 @@ html, body {
   font-family: 'Inter', serif;
   font-size: 10px;
   line-height: 1;
+  color: #141414;
 }
 *, *::before, *::after {
   box-sizing: border-box;

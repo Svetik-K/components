@@ -9,9 +9,10 @@ type HeaderProps = {
 
 class Header extends React.Component<HeaderProps> {
   render() {
+    const pageName = `page page-${this.props.name}`;
     return (
       <header>
-        <h1 className="page-name">{this.props.name}</h1>
+        <h1 className={pageName}>{this.props.name}</h1>
         <Navbar></Navbar>
         {this.props.children}
       </header>
