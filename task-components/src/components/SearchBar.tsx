@@ -10,10 +10,6 @@ class SearchBar extends React.Component {
     cards: localStorage.savedCards ? JSON.parse(localStorage.savedCards) : allCards,
   };
 
-  handleClick(e: Event): void {
-    e.preventDefault();
-  }
-
   handleChange(e: ChangeEvent<HTMLInputElement>) {
     const search = e.target.value;
     this.setState({ searchValue: search });
@@ -43,7 +39,7 @@ class SearchBar extends React.Component {
             value={this.state.searchValue}
             onChange={this.handleChange.bind(this)}
           />
-          <Button name="search" onClick={this.handleClick.bind(this)}></Button>
+          <Button name="search"></Button>
         </div>
         <CardsList cards={this.state.cards}></CardsList>
       </div>

@@ -6,7 +6,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <Header name="Enhance"></Header>
+        <Header name="Home"></Header>
         <SearchBar></SearchBar>
       </div>
     );

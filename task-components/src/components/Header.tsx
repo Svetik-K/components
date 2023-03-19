@@ -12,7 +12,7 @@ class Header extends React.Component<HeaderProps> {
     const pageName = `page page-${this.props.name}`;
     return (
       <header>
-        <h1 className={pageName}>{this.props.name}</h1>
+        <h1 className={pageName}>It is {this.props.name} page</h1>
         <Navbar></Navbar>
         {this.props.children}
       </header>

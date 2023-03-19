@@ -9,4 +9,12 @@ describe('Search field', () => {
     userEvent.type(screen.getByRole('textbox'), 'snow');
     expect(screen.getByRole('textbox')).toHaveDisplayValue('snow');
   });
+
+  it('the entered value is saved to local storage', () => {
+    localStorage.clear();
+    render(<SearchBar />);
+    userEvent.type(screen.getByRole('textbox'), 'tram');
+    const savedSearch = localStorage.savedValue;
+    expect(savedSearch).toEqual('tram');
+  });
 });
