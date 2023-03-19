@@ -1,0 +1,16 @@
+.error-page-main {
+	width: 100%;
+	height: calc(100vh - 80px);
+  background: url(../../public/assets/svg/404.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.about-page-main {
+	width: 100%;
+	height: calc(100vh - 80px);
+  background: url(../../public/assets/images/about.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
