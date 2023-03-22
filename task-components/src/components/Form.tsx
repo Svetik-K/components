@@ -17,10 +17,14 @@ class Form extends React.Component {
     this.dateInput = React.createRef();
     this.fileUpload = React.createRef();
     this.countryInput = React.createRef();
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit() {
-    console.log('frrrr');
+
+  handleSubmit(e: SubmitEvent) {
+    console.log(this.nameInput.current?.value);
+    e.preventDefault();
   }
+
   render() {
     const countriesList = countries.map((country) => {
       return (
@@ -30,39 +34,53 @@ class Form extends React.Component {
       );
     });
     return (
-      <form className="form" onSubmit={this.handleSubmit.bind(this)}>
+      <form className="form" onSubmit={() => this.handleSubmit}>
         <h2 className="form-title">Fill in the form below</h2>
-        <label className="name-input">
-          Name:
-          <input type="text" ref={this.nameInput} />
-        </label>
-        <br />
-        <label className="surname-input">
-          Surname:
-          <input type="text" ref={this.surnameInput} />
-        </label>
-        <br />
-        <label className="birth-input">
-          Date of birth:
-          <input type="date" ref={this.dateInput} />
-        </label>
-        <br />
-        <select ref={this.countryInput} className="select-bar">
-          {countriesList}
-        </select>
-        <div className="gender-radios">
-          <input type="radio" value="Male" name="gender" /> Male
-          <input type="radio" value="Female" name="gender" /> Female
-          <input type="radio" value="Other" name="gender" /> Other
+        <div className="name-input">
+          <label htmlFor="username">*Name:</label>
+          <input type="text" id="username" ref={this.nameInput} placeholder="Mike" required />
         </div>
-        <label className="file-upload">
-          Upload your foto:
-          <input type="file" ref={this.fileUpload} />
-        </label>
+        <br />
+        <div className="surname-input">
+          <label htmlFor="user-surname">*Surname:</label>
+          <input
+            type="text"
+            id="user-surname"
+            ref={this.surnameInput}
+            placeholder="Willson"
+            required
+          />
+        </div>
+        <br />
+        <div className="birth-input">
+          <label htmlFor="birth-date">Date of birth:</label>
+          <input type="date" id="birth-date" ref={this.dateInput} />
+        </div>
+        <br />
+        <div className="countries">
+          <select ref={this.countryInput} className="select-bar">
+            <option value="Choose Your country" key="choose">
+              Choose Your country
+            </option>
+            {countriesList}
+          </select>
+        </div>
+        <div className="gender-radios">
+          <label htmlFor="male">Male</label>
+          <input type="radio" id="male" value="Male" name="gender" />
+          <label htmlFor="female">Female</label>
+          <input type="radio" id="female" value="Female" name="gender" />
+          <label htmlFor="other">Other</label>
+          <input type="radio" id="other" value="Other" name="gender" />
+        </div>
+        <div className="file-upload">
+          <label htmlFor="user-image">Upload your foto:</label>
+          <input type="file" id="user-image" ref={this.fileUpload} />
+        </div>
         <br />
         <div className="agreement">
-          <input type="checkbox" />
-          <span>I have read and agree to the use of my personal data</span>
+          <input type="checkbox" required />
+          <span>I have read the document and agree to the use of my personal data</span>
         </div>
         <Button type="submit" name="submit">
           Submit
