@@ -60,6 +60,10 @@ class Form extends React.Component {
           <input type="file" ref={this.fileUpload} />
         </label>
         <br />
+        <div className="agreement">
+          <input type="checkbox" />
+          <span>I have read and agree to the use of my personal data</span>
+        </div>
         <Button type="submit" name="submit">
           Submit
         </Button>
