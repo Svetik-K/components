@@ -10,6 +10,12 @@
 	margin-bottom: 20px;
 }
 
+.name-input,
+.surname-input {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
 .button-submit {
 	width: 80px;
 	height: 25px;
