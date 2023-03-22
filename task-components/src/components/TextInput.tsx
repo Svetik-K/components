@@ -11,6 +11,7 @@ class TextInput extends React.Component<TextInputProps> {
     super(props);
     this.input = React.createRef();
   }
+
   render() {
     return (
       <div>
