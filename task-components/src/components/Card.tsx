@@ -18,19 +18,20 @@ type CardProps = {
 
 class Card extends React.Component<CardProps> {
   render() {
+    const { id, image, title, designer, categories, likes, views } = this.props.card;
     return (
-      <div className="card" key={this.props.card.id}>
+      <div className="card" key={id}>
         <div className="card-image">
-          <img className="card-picture" src={this.props.card.image} alt={this.props.card.title} />
+          <img className="card-picture" src={image} alt={title} />
         </div>
         <div className="card-info">
-          <h3 className="card-title">{this.props.card.title}</h3>
-          <h4 className="card-designer">By {this.props.card.designer}</h4>
-          <p className="card-categories">{this.props.card.categories}</p>
+          <h3 className="card-title">{title}</h3>
+          <h4 className="card-designer">By {designer}</h4>
+          <p className="card-categories">{categories}</p>
         </div>
         <div className="card-socials">
-          <p className="card-likes">{this.props.card.likes}</p>
-          <p className="card-views">{this.props.card.views}</p>
+          <p className="card-likes">{likes}</p>
+          <p className="card-views">{views}</p>
         </div>
       </div>
     );

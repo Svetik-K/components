@@ -4,7 +4,7 @@ import '../styles/search.css';
 import CardsList from './CardsList';
 import allCards from '../data/cards.json';
 
-class SearchBar extends React.Component {
+class Search extends React.Component {
   state = {
     searchValue: localStorage.savedValue || '',
     cards: localStorage.savedCards ? JSON.parse(localStorage.savedCards) : allCards,
@@ -47,4 +47,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default Search;

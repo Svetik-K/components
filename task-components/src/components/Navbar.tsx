@@ -17,6 +17,11 @@ class Navbar extends React.Component {
               About Us
             </Link>
           </li>
+          <li className="list-item">
+            <Link to="/form" className="nav-link">
+              Form
+            </Link>
+          </li>
         </ul>
       </nav>
     );

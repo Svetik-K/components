@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from '../components/Header';
-import SearchBar from 'components/SearchBar';
+import Search from 'components/Search';
 
 class MainPage extends React.Component {
   render() {
     return (
       <div>
         <Header name="Home"></Header>
-        <SearchBar></SearchBar>
+        <Search></Search>
       </div>
     );
   }
