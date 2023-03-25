@@ -17,6 +17,7 @@ export type FormState = {
     file: string;
     agreement: string;
   };
+  isValid: boolean;
 };
 
 export interface CardContent {

@@ -30,6 +30,7 @@
 .form-card-name,
 .form-card-surname {
   font-size: 1.4rem;
+  line-height: 1.6rem;
   margin-bottom: 5px;
   font-weight: 400;
 }

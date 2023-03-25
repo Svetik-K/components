@@ -39,6 +39,7 @@ class Form extends React.Component<FormProps> {
         file: '',
         agreement: '',
       },
+      isValid: false,
     };
   }
 
@@ -75,6 +76,10 @@ class Form extends React.Component<FormProps> {
       !errors.agreement
     ) {
       this.props.onSubmit({ name, surname, date, country, gender, file });
+      this.setState({ isValid: true });
+      setTimeout(() => {
+        this.setState({ isValid: false });
+      }, 2000);
       if (curNameInput) {
         curNameInput.value = '';
       }
@@ -114,7 +119,7 @@ class Form extends React.Component<FormProps> {
         <h2 className="form-title">Fill in the form below</h2>
         <div className="name-input">
           <label htmlFor="username">Name:*</label>
-          <input type="text" id="username" ref={this.nameInput} placeholder="Mike" />
+          <input type="text" id="username" ref={this.nameInput} placeholder="Elisabeth" />
           {errors.name && <span className="error-message">{errors.name}</span>}
         </div>
         <br />
@@ -168,6 +173,11 @@ class Form extends React.Component<FormProps> {
           {errors.agreement && <p className="error-message">{errors.agreement}</p>}
         </div>
         <Button name="submit">Submit</Button>
+        {this.state.isValid && (
+          <div className="submitted-message">
+            <p className="submitted-text">Your personal data have been submitted</p>
+          </div>
+        )}
       </form>
     );
   }
