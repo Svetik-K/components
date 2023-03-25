@@ -76,32 +76,35 @@ class Form extends React.Component<FormProps> {
       !errors.agreement
     ) {
       this.props.onSubmit({ name, surname, date, country, gender, file });
+      console.log(file);
       this.setState({ isValid: true });
+      document.body.style.pointerEvents = 'none';
       setTimeout(() => {
         this.setState({ isValid: false });
+        if (curNameInput) {
+          curNameInput.value = '';
+        }
+        if (curSurnameInput) {
+          curSurnameInput.value = '';
+        }
+        if (curDateInput) {
+          curDateInput.value = '';
+        }
+        if (curCountryInput) {
+          curCountryInput.value = 'Choose Your country';
+        }
+        if (selectedRadio) {
+          selectedRadio.checked = false;
+        }
+        if (curFileUpload) {
+          curFileUpload.value = '';
+        }
+        if (agreementCheckbox) {
+          agreementCheckbox.checked = false;
+        }
+        this.setState({ errors: {} });
+        document.body.style.pointerEvents = '';
       }, 2000);
-      if (curNameInput) {
-        curNameInput.value = '';
-      }
-      if (curSurnameInput) {
-        curSurnameInput.value = '';
-      }
-      if (curDateInput) {
-        curDateInput.value = '';
-      }
-      if (curCountryInput) {
-        curCountryInput.value = 'Choose Your country';
-      }
-      if (selectedRadio) {
-        selectedRadio.checked = false;
-      }
-      if (curFileUpload) {
-        curFileUpload.value = '';
-      }
-      if (agreementCheckbox) {
-        agreementCheckbox.checked = false;
-      }
-      this.setState({ errors: {} });
     }
   }
 
@@ -174,9 +177,7 @@ class Form extends React.Component<FormProps> {
         </div>
         <Button name="submit">Submit</Button>
         {this.state.isValid && (
-          <div className="submitted-message">
-            <p className="submitted-text">Your personal data have been submitted</p>
-          </div>
+          <div className="submitted-message">Your personal data have been saved</div>
         )}
       </form>
     );

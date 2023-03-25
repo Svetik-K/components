@@ -12,7 +12,7 @@ const newCard = {
   views: '7844',
 };
 
-describe('Cards list', () => {
+describe('Card', () => {
   it("renders all the card's content", () => {
     render(<Card card={newCard} />);
     expect(screen.getByAltText(/Morning's pedestrians/i)).toBeInTheDocument();

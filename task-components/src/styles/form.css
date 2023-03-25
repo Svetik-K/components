@@ -109,11 +109,8 @@ input,
 	top: 50%;
 	left: 0;
 	transform: translateY(-50%);
-	background-color: #141414;
-	color: #FFFFFF;
-}
-
-.submitted-text {
 	font-size: 1.6rem;
 	font-weight: 500;
+	background-color: #141414;
+	color: #FFFFFF;
 }
