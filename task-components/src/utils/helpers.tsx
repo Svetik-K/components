@@ -3,14 +3,18 @@ function validateForm(
   surname: string,
   date: string,
   country: string,
-  file: File | null
+  gender: string,
+  file: File | null,
+  agreement: boolean
 ) {
   const errors = {
     name: '',
     surname: '',
     date: '',
     country: '',
+    gender: '',
     file: '',
+    agreement: '',
   };
   if (!name) {
     errors.name = 'Please enter your name';
@@ -24,8 +28,14 @@ function validateForm(
   if (country === 'Choose Your country') {
     errors.country = 'Please choose your country';
   }
+  if (!gender) {
+    errors.gender = 'Please select a gender';
+  }
   if (!file) {
     errors.file = 'Please upload your profile image';
+  }
+  if (agreement === false) {
+    errors.agreement = 'Please agree to our policy';
   }
   return errors;
 }

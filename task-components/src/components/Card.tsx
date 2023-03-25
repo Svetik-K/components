@@ -1,15 +1,6 @@
 import React from 'react';
+import { CardContent } from 'utils/types';
 import '../styles/card.css';
-
-export interface CardContent {
-  id: number | string;
-  image: string;
-  title: string;
-  designer: string;
-  categories: string;
-  likes: string;
-  views: string;
-}
 
 type CardProps = {
   card: CardContent;

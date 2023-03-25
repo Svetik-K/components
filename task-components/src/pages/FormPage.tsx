@@ -21,8 +21,7 @@ class FormPage extends React.Component {
   }
 
   handleSubmit(formData: FormCardContent) {
-    const newCard = <FormCard key={this.state.cards.length} formData={formData} />;
-    this.setState({ cards: [...this.state.cards, newCard] });
+    this.setState({ cards: [...this.state.cards, formData] });
   }
 
   render() {

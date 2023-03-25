@@ -16,6 +16,8 @@ class Form extends React.Component<FormProps> {
   fileUpload: React.RefObject<HTMLInputElement>;
   countryInput: React.RefObject<HTMLSelectElement>;
   state: FormState;
+  radioGroupRef: React.RefObject<HTMLDivElement>;
+  checkboxRef: React.RefObject<HTMLInputElement>;
 
   constructor(props: FormProps) {
     super(props);
@@ -24,6 +26,8 @@ class Form extends React.Component<FormProps> {
     this.dateInput = React.createRef();
     this.fileUpload = React.createRef();
     this.countryInput = React.createRef();
+    this.radioGroupRef = React.createRef();
+    this.checkboxRef = React.createRef();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.state = {
       errors: {
@@ -31,7 +35,9 @@ class Form extends React.Component<FormProps> {
         surname: '',
         date: '',
         country: '',
+        gender: '',
         file: '',
+        agreement: '',
       },
     };
   }
@@ -47,11 +53,28 @@ class Form extends React.Component<FormProps> {
     const curCountryInput = this.countryInput.current as HTMLSelectElement;
     const country = curCountryInput.value;
     const curFileUpload = this.fileUpload.current as HTMLInputElement;
+    const genderGroup = this.radioGroupRef.current as HTMLDivElement;
+    const selectedRadio = genderGroup.querySelector<HTMLInputElement>(
+      'input:checked'
+    ) as HTMLInputElement;
+    const gender = selectedRadio?.value || '';
     const file = curFileUpload.files && curFileUpload.files[0];
+    const agreementCheckbox = this.checkboxRef.current as HTMLInputElement;
+    const agreement = agreementCheckbox.checked;
 
-    const errors = validateForm(name, surname, date, country, file);
-    if (!errors.name && !errors.surname && !errors.date && !errors.country && !errors.file) {
-      this.props.onSubmit({ name, surname, date, country, file });
+    const errors = validateForm(name, surname, date, country, gender, file, agreement);
+    this.setState({ errors });
+
+    if (
+      !errors.name &&
+      !errors.surname &&
+      !errors.date &&
+      !errors.country &&
+      !errors.gender &&
+      !errors.file &&
+      !errors.agreement
+    ) {
+      this.props.onSubmit({ name, surname, date, country, gender, file });
       if (curNameInput) {
         curNameInput.value = '';
       }
@@ -64,8 +87,14 @@ class Form extends React.Component<FormProps> {
       if (curCountryInput) {
         curCountryInput.value = 'Choose Your country';
       }
+      if (selectedRadio) {
+        selectedRadio.checked = false;
+      }
       if (curFileUpload) {
         curFileUpload.value = '';
+      }
+      if (agreementCheckbox) {
+        agreementCheckbox.checked = false;
       }
       this.setState({ errors: {} });
     }
@@ -112,23 +141,25 @@ class Form extends React.Component<FormProps> {
           {errors.country && <span className="error-message">{errors.country}</span>}
         </div>
         <p className="gender-title">Gender:</p>
-        <div className="gender-radios">
+        <div className="gender-radios" ref={this.radioGroupRef}>
           <label htmlFor="male">Male</label>
           <input type="radio" id="male" value="Male" name="gender" />
           <label htmlFor="female">Female</label>
           <input type="radio" id="female" value="Female" name="gender" />
           <label htmlFor="other">Other</label>
           <input type="radio" id="other" value="Other" name="gender" />
+          {errors.gender && <p className="error-message">{errors.gender}</p>}
         </div>
         <div className="file-upload">
           <label htmlFor="user-image">Upload your profile image:</label>
           <input type="file" id="user-image" ref={this.fileUpload} />
-          {errors.file && <span className="error-message">{errors.file}</span>}
+          {errors.file && <p className="error-message">{errors.file}</p>}
         </div>
         <br />
         <div className="agreement">
-          <input type="checkbox" />
+          <input type="checkbox" ref={this.checkboxRef} />
           <span>I have read the agreement and consent to the use of my personal data</span>
+          {errors.agreement && <p className="error-message">{errors.agreement}</p>}
         </div>
         <Button name="submit">Submit</Button>
       </form>

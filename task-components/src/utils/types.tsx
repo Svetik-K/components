@@ -3,6 +3,7 @@ export interface FormCardContent {
   surname: string;
   date: string;
   country: string;
+  gender: string;
   file: File | null;
 }
 
@@ -12,6 +13,18 @@ export type FormState = {
     surname: string;
     date: string;
     country: string;
+    gender: string;
     file: string;
+    agreement: string;
   };
 };
+
+export interface CardContent {
+  id: number | string;
+  image: string;
+  title: string;
+  designer: string;
+  categories: string;
+  likes: string;
+  views: string;
+}

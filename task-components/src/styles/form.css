@@ -46,10 +46,12 @@ input[name="gender"] {
 .name-input,
 .surname-input,
 .birth-input,
-.select-bar,
-.file-upload,
-.countries {
+.file-upload {
 	margin-bottom: 5px;
+}
+
+.countries {
+	margin-bottom: 10px;
 }
 
 input,
