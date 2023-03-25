@@ -35,7 +35,7 @@ function validateForm(
     errors.file = 'Please upload your profile image';
   }
   if (agreement === false) {
-    errors.agreement = 'Please agree to our policy';
+    errors.agreement = 'Please check the box to agree to our Terms and Policy';
   }
   return errors;
 }

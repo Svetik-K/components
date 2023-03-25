@@ -35,7 +35,7 @@ class FormCard extends React.Component<FormCardProps> {
             <p className="form-card-gender">{gender}</p>
           </div>
         </div>
-        <p className="form-card-birthday">Birthdate: {date}</p>
+        <p className="form-card-birthday">Birthday: {date}</p>
         <p className="form-card-country">Country: {country}</p>
       </div>
     );

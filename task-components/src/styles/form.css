@@ -5,6 +5,7 @@
 	border-radius: 5px;
 	padding: 20px 30px;
 	margin-top: 10px;
+	background-color: #f9f9f9;
 }
 
 .form-title {
@@ -43,11 +44,8 @@ input[name="gender"] {
 	margin-right: 25px;
 }
 
-.name-input,
-.surname-input,
-.birth-input,
 .file-upload {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
 .countries {
@@ -59,6 +57,10 @@ input,
 	outline: none;
 }
 
+.gender {
+	margin-bottom: 15px;
+}
+
 .gender-title {
 	font-size: 1.2rem;
 	margin-bottom: 5px;
@@ -67,13 +69,15 @@ input,
 .gender-radios {
 	display: flex;
 	align-items: center;
-	margin-bottom: 15px;
 }
 
-.agreement {
+.agreement-check {
 	display: flex;
 	align-items: center;
 	gap: 7px;
+}
+
+.agreement {
 	margin-bottom: 20px;
 }
 
@@ -91,4 +95,5 @@ input,
 .error-message {
 	color: #DD2255;
 	font-size: 1rem;
+	line-height: 1.4rem;
 }

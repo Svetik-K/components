@@ -3,7 +3,6 @@ import FormCardsList from 'components/FormCardsList';
 import Header from 'components/Header';
 import React from 'react';
 import { FormCardContent } from 'utils/types';
-import FormCard from '../components/FormCard';
 
 type State = {
   cards: FormCardContent[] | [];

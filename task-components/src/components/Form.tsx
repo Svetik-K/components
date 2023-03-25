@@ -113,25 +113,25 @@ class Form extends React.Component<FormProps> {
       <form className="form" onSubmit={this.handleFormSubmit}>
         <h2 className="form-title">Fill in the form below</h2>
         <div className="name-input">
-          <label htmlFor="username">Name:</label>
+          <label htmlFor="username">Name:*</label>
           <input type="text" id="username" ref={this.nameInput} placeholder="Mike" />
           {errors.name && <span className="error-message">{errors.name}</span>}
         </div>
         <br />
         <div className="surname-input">
-          <label htmlFor="user-surname">Surname:</label>
+          <label htmlFor="user-surname">Surname:*</label>
           <input type="text" id="user-surname" ref={this.surnameInput} placeholder="Willson" />
           {errors.surname && <span className="error-message">{errors.surname}</span>}
         </div>
         <br />
         <div className="birth-input">
-          <label htmlFor="birth-date">Date of birth:</label>
+          <label htmlFor="birth-date">Date of birth:*</label>
           <input type="date" id="birth-date" ref={this.dateInput} />
           {errors.date && <span className="error-message">{errors.date}</span>}
         </div>
         <br />
         <div className="countries">
-          <p className="countries-label">Country:</p>
+          <p className="countries-label">Country:*</p>
           <select ref={this.countryInput} className="select-bar">
             <option value="Choose Your country" key="choose">
               Choose Your country
@@ -140,25 +140,31 @@ class Form extends React.Component<FormProps> {
           </select>
           {errors.country && <span className="error-message">{errors.country}</span>}
         </div>
-        <p className="gender-title">Gender:</p>
-        <div className="gender-radios" ref={this.radioGroupRef}>
-          <label htmlFor="male">Male</label>
-          <input type="radio" id="male" value="Male" name="gender" />
-          <label htmlFor="female">Female</label>
-          <input type="radio" id="female" value="Female" name="gender" />
-          <label htmlFor="other">Other</label>
-          <input type="radio" id="other" value="Other" name="gender" />
+        <div className="gender">
+          <p className="gender-title">Gender:*</p>
+          <div className="gender-radios" ref={this.radioGroupRef}>
+            <label htmlFor="male">Male</label>
+            <input type="radio" id="male" value="Male" name="gender" />
+            <label htmlFor="female">Female</label>
+            <input type="radio" id="female" value="Female" name="gender" />
+            <label htmlFor="other">Other</label>
+            <input type="radio" id="other" value="Other" name="gender" />
+          </div>
           {errors.gender && <p className="error-message">{errors.gender}</p>}
         </div>
         <div className="file-upload">
-          <label htmlFor="user-image">Upload your profile image:</label>
+          <label htmlFor="user-image">Upload your profile image:*</label>
           <input type="file" id="user-image" ref={this.fileUpload} />
           {errors.file && <p className="error-message">{errors.file}</p>}
         </div>
         <br />
         <div className="agreement">
-          <input type="checkbox" ref={this.checkboxRef} />
-          <span>I have read the agreement and consent to the use of my personal data</span>
+          <div className="agreement-check">
+            <input type="checkbox" ref={this.checkboxRef} />
+            <span>
+              I have read the Terms and Policy and consent to the use of my personal data*
+            </span>
+          </div>
           {errors.agreement && <p className="error-message">{errors.agreement}</p>}
         </div>
         <Button name="submit">Submit</Button>
