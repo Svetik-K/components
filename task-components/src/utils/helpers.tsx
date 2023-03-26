@@ -31,7 +31,7 @@ function validateForm(
   if (!date) {
     errors.date = 'Please enter your date of birth';
   } else if (!validateBirthDate(date)) {
-    errors.date = 'Please enter a valid date';
+    errors.date = `The birth date can't be more than today's date`;
   }
 
   if (country === 'Choose Your country') {

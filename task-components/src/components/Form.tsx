@@ -76,7 +76,6 @@ class Form extends React.Component<FormProps> {
       !errors.agreement
     ) {
       this.props.onSubmit({ name, surname, date, country, gender, file });
-      console.log(file);
       this.setState({ isValid: true });
       document.body.style.pointerEvents = 'none';
       setTimeout(() => {
@@ -168,10 +167,10 @@ class Form extends React.Component<FormProps> {
         <br />
         <div className="agreement">
           <div className="agreement-check">
-            <input type="checkbox" ref={this.checkboxRef} />
-            <span>
+            <input type="checkbox" id="agree-check" ref={this.checkboxRef} />
+            <label htmlFor="agree-check">
               I have read the Terms and Policy and consent to the use of my personal data*
-            </span>
+            </label>
           </div>
           {errors.agreement && <p className="error-message">{errors.agreement}</p>}
         </div>
