@@ -16,6 +16,7 @@ describe('form', () => {
 		expect(screen.getByRole('radio', { name: 'Other' })).toBeInTheDocument();
 		expect(screen.getByLabelText('Upload your profile image:*')).toBeInTheDocument();
 		expect(screen.getByLabelText(/I have read the Terms and Policy/i)).toBeInTheDocument();
+		expect(screen.getByLabelText(/I have read the Terms and Policy/i)).not.toBeChecked()
 		expect(screen.getByRole('button', { name: 'Submit' })).toBeInTheDocument();
   });
 
@@ -59,25 +60,32 @@ describe('form', () => {
 		await screen.findByText(`The birth date can't be more than today's date`);
   });
 
-	it("form submits after all the inputs are filled", async () => {
+	it("no errors shown after the fields have been filled with relevant data", () => {
     render(<Form />);
 		const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
 		userEvent.type(nameInput, 'Michaella');
 		const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' })
 		userEvent.type(surnameInput, 'Lindström');
 		const birthDate = screen.getByLabelText('Date of birth:*');
-		userEvent.type(birthDate, '06231987');
+		fireEvent.change(birthDate, { target: { value: '2020-10-26' } });
 		const select = screen.getByRole('combobox');
 		userEvent.selectOptions(select, 'Sweden');
 		const gender = screen.getByRole('radio', { name: 'Female' });
 		userEvent.click(gender);
 		const fileInput = screen.getByLabelText(/Upload your/i);
-		const file = new File([''], 'cat.jpg', { type: 'image/jpeg' });
+		const file = new File(['cat'], 'cat.jpg', { type: 'image/jpeg' });
 		userEvent.upload(fileInput, file);
 		const agreement = screen.getByLabelText(/I have read the Terms/i);
 		userEvent.click(agreement);
 		const button = screen.getByRole('button', { name: 'Submit' });
 		userEvent.click(button);
+		expect(screen.queryByText('Please enter your name')).not.toBeInTheDocument();
+		expect(screen.queryByText('Please enter your surname')).not.toBeInTheDocument();
+		expect(screen.queryByText('Please enter your date of birth')).not.toBeInTheDocument();
+		expect(screen.queryByText('Please choose your country')).not.toBeInTheDocument();
+		expect(screen.queryByText('Please select a gender')).not.toBeInTheDocument();
+		expect(screen.queryByText('Please upload your profile image')).not.toBeInTheDocument();
+		expect(screen.queryByText('Please check the box to agree to our Terms and Policy')).not.toBeInTheDocument();
   });
 
 });
