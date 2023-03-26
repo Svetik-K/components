@@ -19,7 +19,7 @@ class FormPage extends React.Component {
     };
   }
 
-  handleSubmit(formData: FormCardContent) {
+  handleSubmit(formData: FormCardContent): void {
     this.setState({ cards: [...this.state.cards, formData] });
   }
 

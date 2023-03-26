@@ -18,13 +18,22 @@ function validateForm(
   };
   if (!name) {
     errors.name = 'Please enter your name';
+  } else if (!validateTextField(name)) {
+    errors.name = 'Your name should contain only letters';
   }
+
   if (!surname) {
     errors.surname = 'Please enter your surname';
+  } else if (!validateTextField(surname)) {
+    errors.surname = 'Your surname should contain only letters';
   }
+
   if (!date) {
     errors.date = 'Please enter your date of birth';
+  } else if (!validateBirthDate(date)) {
+    errors.date = 'Please enter a valid date';
   }
+
   if (country === 'Choose Your country') {
     errors.country = 'Please choose your country';
   }
@@ -40,4 +49,19 @@ function validateForm(
   return errors;
 }
 
-export default validateForm;
+const validateTextField = (text: string) => {
+  const textRegex = new RegExp('^\\D+$');
+  const valid = textRegex.test(text);
+  return valid;
+};
+
+const validateBirthDate = (date: string) => {
+  const today = new Date().toISOString().slice(0, 10);
+  if (date > today) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export { validateForm };

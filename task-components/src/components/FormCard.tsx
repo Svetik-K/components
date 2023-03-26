@@ -11,7 +11,7 @@ class FormCard extends React.Component<FormCardProps> {
     fileUrl: null,
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     const reader = new FileReader();
     reader.onload = () => {
       this.setState({ fileUrl: reader.result });

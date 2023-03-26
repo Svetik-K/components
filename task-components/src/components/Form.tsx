@@ -3,7 +3,7 @@ import '../styles/form.css';
 import Button from './Button';
 import countries from '../data/countries';
 import { FormCardContent, FormState } from '../utils/types';
-import validateForm from '../utils/helpers';
+import { validateForm } from '../utils/helpers';
 
 type FormProps = {
   onSubmit: (formData: FormCardContent) => void;
@@ -43,7 +43,7 @@ class Form extends React.Component<FormProps> {
     };
   }
 
-  handleFormSubmit(e: FormEvent<HTMLFormElement>) {
+  handleFormSubmit(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     const curNameInput = this.nameInput.current as HTMLInputElement;
     const name = curNameInput.value;

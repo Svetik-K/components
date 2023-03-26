@@ -114,3 +114,39 @@ input,
 	background-color: #141414;
 	color: #FFFFFF;
 }
+
+input[type="radio"] {
+	appearance: none;
+  -webkit-appearance: none;
+	width: 13px;
+	height: 13px;
+	border: 1px solid #141414;
+	background-color: transparent;
+  border-radius: 50%;
+	cursor: pointer;
+}
+
+input[type="radio"]:checked {
+	background: url(../../public/assets/svg/circle.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+input[type="checkbox"] {
+	appearance: none;
+  -webkit-appearance: none;
+	width: 15px;
+	height: 15px;
+	border: 1px solid #141414;
+	background-color: transparent;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+	background: url(../../public/assets/svg/check.svg) #141414;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
