@@ -3,23 +3,23 @@ import { render, screen } from '@testing-library/react';
 import FormCardsList from 'components/FormCardsList';
 
 const newCards = [
-	{
-		name: 'Karina',
-		surname: 'Holms',
-		date: '2010-08-12',
-		country: 'Sweden',
-		gender: 'Female',
-		file: null
-	},
-	{
-		name: 'Richard',
-		surname: 'Hills',
-		date: '2000-04-25',
-		country: 'Brasil',
-		gender: 'Male',
-		file: null
-	}
-]
+  {
+    name: 'Karina',
+    surname: 'Holms',
+    date: '2010-08-12',
+    country: 'Sweden',
+    gender: 'Female',
+    file: null,
+  },
+  {
+    name: 'Richard',
+    surname: 'Hills',
+    date: '2000-04-25',
+    country: 'Brasil',
+    gender: 'Male',
+    file: null,
+  },
+];
 
 describe('cards with data from the form', () => {
   it('renders only cards from the passed list', () => {

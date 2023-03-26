@@ -5,17 +5,17 @@ import { FormCardContent } from 'utils/types';
 
 const file = new File([''], 'cat.jpg', { type: 'image/jpeg' });
 const formData: FormCardContent = {
-	name: 'Karina',
-	surname: 'Holms',
-	date: '2010-08-12',
-	country: 'Sweden',
-	gender: 'Female',
-	file: file
-}
+  name: 'Karina',
+  surname: 'Holms',
+  date: '2010-08-12',
+  country: 'Sweden',
+  gender: 'Female',
+  file: file,
+};
 
 describe('card with data from the form', () => {
   it("renders all the card's content", () => {
-    render(<FormCard  formData={formData} />);
+    render(<FormCard formData={formData} />);
     expect(screen.getByText(/Karina/i)).toBeInTheDocument();
     expect(screen.getByText(/Holms/i)).toBeInTheDocument();
     expect(screen.getByText(/2010-08-12/i)).toBeInTheDocument();
