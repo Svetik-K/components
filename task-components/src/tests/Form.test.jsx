@@ -16,13 +16,13 @@ describe('form', () => {
 		expect(screen.getByRole('radio', { name: 'Other' })).toBeInTheDocument();
 		expect(screen.getByLabelText('Upload your profile image:*')).toBeInTheDocument();
 		expect(screen.getByLabelText(/I have read the Terms and Policy/i)).toBeInTheDocument();
-		expect(screen.getByLabelText(/I have read the Terms and Policy/i)).not.toBeChecked()
+		expect(screen.getByLabelText(/I have read the Terms and Policy/i)).not.toBeChecked();
 		expect(screen.getByRole('button', { name: 'Submit' })).toBeInTheDocument();
   });
 
 	it("renders all error messages when submit an empty form", async () => {
     render(<Form />);
-		const button = screen.getByRole('button', { name: 'Submit' })
+		const button = screen.getByRole('button', { name: 'Submit' });
 		fireEvent.click(button);
 		await screen.findByText('Please enter your name');
 		await screen.findByText('Please enter your surname');
@@ -35,7 +35,7 @@ describe('form', () => {
 
 	it("should show error message if name input contains numbers", async () => {
     render(<Form />);
-		const nameInput = screen.getByRole('textbox', { name: 'Name:*' })
+		const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
 		fireEvent.change(nameInput, { target: { value: '918739yiqyuyqi' } });
 		const button = screen.getByRole('button', { name: 'Submit' });
 		fireEvent.click(button);
@@ -44,7 +44,7 @@ describe('form', () => {
 
 	it("should show error message if surname input contains numbers", async () => {
     render(<Form />);
-		const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' })
+		const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
 		fireEvent.change(surnameInput, { target: { value: 'ibwe93b46bw8jogw' } });
 		const button = screen.getByRole('button', { name: 'Submit' });
 		fireEvent.click(button);
@@ -64,7 +64,7 @@ describe('form', () => {
     render(<Form />);
 		const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
 		userEvent.type(nameInput, 'Michaella');
-		const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' })
+		const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
 		userEvent.type(surnameInput, 'Lindström');
 		const birthDate = screen.getByLabelText('Date of birth:*');
 		fireEvent.change(birthDate, { target: { value: '2020-10-26' } });
