@@ -1,0 +1,160 @@
+.form {
+	position: relative;
+  width: 60%;
+	margin: 0 auto;
+	border: 1.5px solid #141414;
+	border-radius: 5px;
+	padding: 20px 30px;
+	margin-top: 10px;
+	background: url(../../public/assets/images/kitties.png) #f9f9f9;
+	background-position: right 20px bottom 10px;
+	background-repeat: no-repeat;
+	background-size: 20%;
+}
+
+.form-title {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+label,
+.countries-label {
+	font-size: 1.2rem;
+	padding-right: 5px;
+}
+
+.name-input,
+.surname-input {
+	width: 100%;
+}
+
+#username,
+#user-surname,
+#birth-date,
+.select-bar {
+	width: 100%;
+	height: 25px;
+	padding: 0 10px;
+	border-radius: 5px;
+	border: 1px solid #141414;
+	margin-top: 3px;
+}
+
+.birth-input {
+	width: 100%;
+}
+
+input[name="gender"] {
+	margin-right: 25px;
+}
+
+.file-upload {
+	margin-bottom: 10px;
+}
+
+.countries {
+	margin-bottom: 10px;
+}
+
+input,
+.select-bar:focus {
+	outline: none;
+}
+
+.gender {
+	margin-bottom: 15px;
+}
+
+.gender-title {
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+}
+
+.gender-radios {
+	display: flex;
+	align-items: center;
+}
+
+.agreement-check {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+}
+
+.agreement {
+	margin-bottom: 20px;
+}
+
+label[for="agree-check"] {
+	font-size: 1rem;
+}
+
+.button-submit {
+	display: block;
+	width: 120px;
+	height: 35px;
+	background-color: #141414;
+	color: #FFFFFF;
+	font-size: 1.4rem;
+	border-radius: 5px;
+	margin: 0 auto;
+}
+
+.error-message {
+	color: #DD2255;
+	font-size: 1rem;
+	line-height: 1.4rem;
+}
+
+.submitted-message {
+	width: 70%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 5px;
+	font-size: 1.6rem;
+	font-weight: 500;
+	background-color: #141414;
+	color: #FFFFFF;
+}
+
+input[type="radio"] {
+	appearance: none;
+  -webkit-appearance: none;
+	width: 13px;
+	height: 13px;
+	border: 1px solid #141414;
+	background-color: transparent;
+  border-radius: 50%;
+	cursor: pointer;
+}
+
+input[type="radio"]:checked {
+	background: url(../../public/assets/svg/circle.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+input[type="checkbox"] {
+	appearance: none;
+  -webkit-appearance: none;
+	width: 15px;
+	height: 15px;
+	border: 1px solid #141414;
+	background-color: transparent;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+	background: url(../../public/assets/svg/check.svg) #141414;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
