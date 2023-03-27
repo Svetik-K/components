@@ -14,7 +14,7 @@ describe('Search field', () => {
     localStorage.clear();
     render(<Search />);
     await userEvent.type(screen.getByRole('textbox'), 'tram');
-    const savedSearch = localStorage.savedValue;
+    const savedSearch: string = localStorage.savedValue;
     expect(savedSearch).toEqual('tram');
   });
 });

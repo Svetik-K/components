@@ -40,7 +40,7 @@ describe('routing', () => {
   });
 
   it('rout to 404 when invalid URL', () => {
-    const badRoute: string = '/page/cards/38374';
+    const badRoute = '/page/cards/38374';
     window.history.pushState({}, 'Test page', badRoute);
     render(<App />);
     expect(screen.getByText(/it is 404 page/i)).toBeInTheDocument();
