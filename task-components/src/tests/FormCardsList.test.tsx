@@ -1,15 +1,19 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import FormCardsList from 'components/FormCardsList';
+import { FormCardContent } from 'utils/types';
 
-const newCards = [
+const file1 = new File(['sun'], 'sun.jpg', { type: 'image/jpeg' });
+const file2 = new File(['moon'], 'moon.jpg', { type: 'image/jpeg' });
+
+const newCards: FormCardContent[] = [
   {
     name: 'Karina',
     surname: 'Holms',
     date: '2010-08-12',
     country: 'Sweden',
     gender: 'Female',
-    file: null,
+    file: file1,
   },
   {
     name: 'Richard',
@@ -17,7 +21,7 @@ const newCards = [
     date: '2000-04-25',
     country: 'Brasil',
     gender: 'Male',
-    file: null,
+    file: file2,
   },
 ];
 

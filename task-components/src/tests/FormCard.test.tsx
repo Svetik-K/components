@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import FormCard from 'components/FormCard';
 import { FormCardContent } from 'utils/types';
 
-const file = new File([''], 'cat.jpg', { type: 'image/jpeg' });
+const file = new File(['cat'], 'cat.jpg', { type: 'image/jpeg' });
 const formData: FormCardContent = {
   name: 'Karina',
   surname: 'Holms',

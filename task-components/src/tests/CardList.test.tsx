@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import CardsList from 'components/CardsList';
+import { CardContent } from 'utils/types';
 
-const newCards = [
+const newCards: CardContent[] = [
   {
     id: 10,
     image: './assets/images/bridge.jpg',

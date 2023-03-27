@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Card from 'components/Card';
+import { CardContent } from 'utils/types';
 
-const newCard = {
+const newCard: CardContent = {
   id: 8,
   image: './assets/images/pedestrians.jpg',
   title: "Morning's pedestrians",
