@@ -4,6 +4,7 @@ import Button from './Button';
 import countries from '../data/countries';
 import { FormCardContent, FormState } from '../utils/types';
 import { validateForm } from '../utils/helpers';
+import GenderGroup from './GenderGroup';
 
 type FormProps = {
   onSubmit: (formData: FormCardContent) => void;
@@ -16,8 +17,9 @@ class Form extends React.Component<FormProps> {
   fileUpload: React.RefObject<HTMLInputElement>;
   countryInput: React.RefObject<HTMLSelectElement>;
   state: FormState;
-  radioGroupRef: React.RefObject<HTMLDivElement>;
+  radioGroupRef: React.RefObject<GenderGroup>;
   checkboxRef: React.RefObject<HTMLInputElement>;
+  formRef: React.RefObject<HTMLFormElement>;
 
   constructor(props: FormProps) {
     super(props);
@@ -28,6 +30,7 @@ class Form extends React.Component<FormProps> {
     this.countryInput = React.createRef();
     this.radioGroupRef = React.createRef();
     this.checkboxRef = React.createRef();
+    this.formRef = React.createRef();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.state = {
       errors: {
@@ -54,10 +57,8 @@ class Form extends React.Component<FormProps> {
     const curCountryInput = this.countryInput.current as HTMLSelectElement;
     const country = curCountryInput.value;
     const curFileUpload = this.fileUpload.current as HTMLInputElement;
-    const genderGroup = this.radioGroupRef.current as HTMLDivElement;
-    const selectedRadio = genderGroup.querySelector<HTMLInputElement>(
-      'input:checked'
-    ) as HTMLInputElement;
+    const genderGroup = this.radioGroupRef.current as GenderGroup;
+    const selectedRadio = genderGroup.getSelected();
     const gender = selectedRadio?.value || '';
     const file = curFileUpload.files && curFileUpload.files[0];
     const agreementCheckbox = this.checkboxRef.current as HTMLInputElement;
@@ -77,32 +78,10 @@ class Form extends React.Component<FormProps> {
     ) {
       this.props.onSubmit({ name, surname, date, country, gender, file });
       this.setState({ isValid: true });
-      document.body.style.pointerEvents = 'none';
       setTimeout(() => {
         this.setState({ isValid: false });
-        if (curNameInput) {
-          curNameInput.value = '';
-        }
-        if (curSurnameInput) {
-          curSurnameInput.value = '';
-        }
-        if (curDateInput) {
-          curDateInput.value = '';
-        }
-        if (curCountryInput) {
-          curCountryInput.value = 'Choose Your country';
-        }
-        if (selectedRadio) {
-          selectedRadio.checked = false;
-        }
-        if (curFileUpload) {
-          curFileUpload.value = '';
-        }
-        if (agreementCheckbox) {
-          agreementCheckbox.checked = false;
-        }
+        this.formRef.current?.reset();
         this.setState({ errors: {} });
-        document.body.style.pointerEvents = '';
       }, 2000);
     }
   }
@@ -117,7 +96,7 @@ class Form extends React.Component<FormProps> {
     });
     const { errors } = this.state;
     return (
-      <form className="form" onSubmit={this.handleFormSubmit}>
+      <form className="form" onSubmit={this.handleFormSubmit} ref={this.formRef}>
         <h2 className="form-title">Fill in the form below</h2>
         <div className="name-input">
           <label htmlFor="username">Name:*</label>
@@ -147,18 +126,7 @@ class Form extends React.Component<FormProps> {
           </select>
           {errors.country && <span className="error-message">{errors.country}</span>}
         </div>
-        <div className="gender">
-          <p className="gender-title">Gender:*</p>
-          <div className="gender-radios" ref={this.radioGroupRef}>
-            <label htmlFor="male">Male</label>
-            <input type="radio" id="male" value="Male" name="gender" />
-            <label htmlFor="female">Female</label>
-            <input type="radio" id="female" value="Female" name="gender" />
-            <label htmlFor="other">Other</label>
-            <input type="radio" id="other" value="Other" name="gender" />
-          </div>
-          {errors.gender && <p className="error-message">{errors.gender}</p>}
-        </div>
+        <GenderGroup errorMessage={errors.gender} ref={this.radioGroupRef}></GenderGroup>
         <div className="file-upload">
           <label htmlFor="user-image">Upload your profile image:*</label>
           <input type="file" id="user-image" ref={this.fileUpload} />
