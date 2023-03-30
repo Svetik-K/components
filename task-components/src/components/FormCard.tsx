@@ -8,15 +8,15 @@ type FormCardProps = {
 
 const FormCard = ({ formData }: FormCardProps) => {
   const [imageUrl, setImageUrl] = useState('');
-  const { username, surname, birthday, country } = formData;
-  // const reader = new FileReader();
-  // reader.onload = () => {
-  //   const resultUrl = reader.result as string;
-  //   setImageUrl(resultUrl);
-  // };
-  // if (formData.image) {
-  //   reader.readAsDataURL(formData.image);
-  // }
+  const { username, surname, gender, birthday, country } = formData;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const resultUrl = reader.result as string;
+    setImageUrl(resultUrl);
+  };
+  if (formData.image) {
+    reader.readAsDataURL(formData.image[0]);
+  }
 
   return (
     <div className="form-card">
@@ -26,7 +26,7 @@ const FormCard = ({ formData }: FormCardProps) => {
         <div>
           <p className="form-card-name">{username}</p>
           <p className="form-card-surname">{surname}</p>
-          {/* <p className="form-card-gender">{gender}</p> */}
+          <p className="form-card-gender">{gender}</p>
         </div>
       </div>
       <p className="form-card-birthday">Birthday: {birthday}</p>

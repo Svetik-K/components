@@ -144,6 +144,12 @@ input[type="radio"]:checked {
 	background-size: cover;
 }
 
+label[for="male"],
+label[for="female"],
+label[for="other"] {
+	font-size: 1rem;
+}
+
 input[type="checkbox"] {
 	appearance: none;
   -webkit-appearance: none;

@@ -3,8 +3,8 @@ export interface FormCardContent {
   surname: string;
   birthday: string;
   country: string;
-  // gender: string;
-  image: File | null;
+  gender: string;
+  image: FileList;
   agreement: boolean;
 }
 
