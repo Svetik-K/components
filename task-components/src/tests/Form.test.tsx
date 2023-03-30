@@ -13,12 +13,19 @@ describe('form', () => {
     expect(screen.getByLabelText('Date of birth:*')).toBeInTheDocument();
     expect(screen.getByRole('combobox')).toBeInTheDocument();
     expect(screen.getByRole('option', { name: 'Choose Your country' })).toBeInTheDocument();
-    expect(screen.getByRole('radio', { name: 'Male' })).toBeInTheDocument();
-    expect(screen.getByRole('radio', { name: 'Female' })).toBeInTheDocument();
-    expect(screen.getByRole('radio', { name: 'Other' })).toBeInTheDocument();
+    const radioMale = screen.getByRole('radio', { name: 'Male' });
+    expect(radioMale).toBeInTheDocument();
+    expect(radioMale).not.toBeChecked();
+    const radioFemale = screen.getByRole('radio', { name: 'Female' });
+    expect(radioFemale).toBeInTheDocument();
+    expect(radioFemale).not.toBeChecked();
+    const radioOther = screen.getByRole('radio', { name: 'Other' });
+    expect(radioOther).toBeInTheDocument();
+    expect(radioOther).not.toBeChecked();
     expect(screen.getByLabelText('Upload your profile image:*')).toBeInTheDocument();
-    expect(screen.getByLabelText(/I have read the Terms and Policy/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/I have read the Terms and Policy/i)).not.toBeChecked();
+    const agreement = screen.getByLabelText(/I have read the Terms and Policy/i);
+    expect(agreement).toBeInTheDocument();
+    expect(agreement).not.toBeChecked();
     expect(screen.getByRole('button', { name: 'Submit' })).toBeInTheDocument();
   });
 
