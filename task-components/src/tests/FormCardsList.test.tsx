@@ -8,20 +8,22 @@ const file2 = new File(['moon'], 'moon.jpg', { type: 'image/jpeg' });
 
 const newCards: FormCardContent[] = [
   {
-    name: 'Karina',
+    username: 'Karina',
     surname: 'Holms',
-    date: '2010-08-12',
+    birthday: '2010-08-12',
     country: 'Sweden',
-    gender: 'Female',
-    file: file1,
+    // gender: 'Female',
+    image: file1,
+    agreement: true,
   },
   {
-    name: 'Richard',
+    username: 'Richard',
     surname: 'Hills',
-    date: '2000-04-25',
+    birthday: '2000-04-25',
     country: 'Brasil',
-    gender: 'Male',
-    file: file2,
+    // gender: 'Male',
+    image: file2,
+    agreement: true,
   },
 ];
 

@@ -1,10 +1,11 @@
 export interface FormCardContent {
-  name: string;
+  username: string;
   surname: string;
-  date: string;
+  birthday: string;
   country: string;
-  gender: string;
-  file: File | null;
+  // gender: string;
+  image: File | null;
+  agreement: boolean;
 }
 
 export type FormState = {

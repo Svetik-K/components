@@ -5,12 +5,13 @@ import { FormCardContent } from 'utils/types';
 
 const file = new File(['cat'], 'cat.jpg', { type: 'image/jpeg' });
 const formData: FormCardContent = {
-  name: 'Karina',
+  username: 'Karina',
   surname: 'Holms',
-  date: '2010-08-12',
+  birthday: '2010-08-12',
   country: 'Sweden',
-  gender: 'Female',
-  file: file,
+  // gender: 'Female',
+  image: file,
+  agreement: true,
 };
 
 describe('card with data from the form', () => {

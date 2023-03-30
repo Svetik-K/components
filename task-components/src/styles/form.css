@@ -118,7 +118,10 @@ label[for="agree-check"] {
 	transform: translate(-50%,-50%);
 	border-radius: 5px;
 	font-size: 1.6rem;
+	line-height: 1.8rem;
 	font-weight: 500;
+	padding: 10px;
+	text-align: center;
 	background-color: #141414;
 	color: #FFFFFF;
 }

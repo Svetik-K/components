@@ -14,7 +14,7 @@ const Search = ({ filterCards }: SearchProps) => {
     setSearchValue(search);
     filterCards(search);
   };
-  
+
   return (
     <div>
       <div className="search-bar">
