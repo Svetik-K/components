@@ -4,12 +4,13 @@ import Button from './Button';
 import countries from '../data/countries';
 import { FormCardContent } from '../utils/types';
 import { useForm } from 'react-hook-form';
+import { validateTextField, validateBirthDate } from 'utils/helpers';
 
 type FormProps = {
   onSubmit: (formData: FormCardContent) => void;
 };
 
-const Form = ({ onSubmit }: FormProps) => {
+const Form: React.FC<FormProps> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -46,10 +47,16 @@ const Form = ({ onSubmit }: FormProps) => {
           id="username"
           {...register('username', {
             required: 'Please enter your name',
+            validate: (value) => validateTextField(value),
           })}
           placeholder="Elisabeth"
         />
-        {errors.username && <span className="error-message">{errors.username.message}</span>}
+        {errors.username?.type === 'required' && (
+          <span className="error-message">{errors.username.message}</span>
+        )}
+        {errors.username?.type === 'validate' && (
+          <span className="error-message">Your name should contain only letters</span>
+        )}
       </div>
       <br />
       <div className="surname-input">
@@ -59,10 +66,16 @@ const Form = ({ onSubmit }: FormProps) => {
           id="user-surname"
           {...register('surname', {
             required: 'Please enter your surname',
+            validate: (value) => validateTextField(value),
           })}
           placeholder="Willson"
         />
-        {errors.surname && <span className="error-message">{errors.surname.message}</span>}
+        {errors.surname?.type === 'required' && (
+          <span className="error-message">{errors.surname.message}</span>
+        )}
+        {errors.surname?.type === 'validate' && (
+          <span className="error-message">Your surname should contain only letters</span>
+        )}
       </div>
       <br />
       <div className="birth-input">
@@ -70,9 +83,19 @@ const Form = ({ onSubmit }: FormProps) => {
         <input
           type="date"
           id="birth-date"
-          {...register('birthday', { required: 'Please enter your date of birth' })}
+          {...register('birthday', {
+            required: 'Please enter your date of birth',
+            validate: (value) => validateBirthDate(value),
+          })}
         />
-        {errors.birthday && <span className="error-message">{errors.birthday.message}</span>}
+        {errors.birthday?.type === 'required' && (
+          <span className="error-message">{errors.birthday.message}</span>
+        )}
+        {errors.birthday?.type === 'validate' && (
+          <span className="error-message">
+            The birth date can not be more than the current date
+          </span>
+        )}
       </div>
       <br />
       <div className="countries">

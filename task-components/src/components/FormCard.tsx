@@ -6,7 +6,7 @@ type FormCardProps = {
   formData: FormCardContent;
 };
 
-const FormCard = ({ formData }: FormCardProps) => {
+const FormCard: React.FC<FormCardProps> = ({ formData }) => {
   const [imageUrl, setImageUrl] = useState('');
   const { username, surname, gender, birthday, country } = formData;
   const reader = new FileReader();

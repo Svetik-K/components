@@ -4,7 +4,7 @@ export interface FormCardContent {
   birthday: string;
   country: string;
   gender: string;
-  image: FileList;
+  image: FileList | null;
   agreement: boolean;
 }
 

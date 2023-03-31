@@ -7,17 +7,15 @@ type HeaderProps = {
   children?: React.ReactNode;
 };
 
-class Header extends React.Component<HeaderProps> {
-  render() {
-    const pageName = `page page-${this.props.name}`;
-    return (
-      <header>
-        <h1 className={pageName}>It is {this.props.name} page</h1>
-        <Navbar></Navbar>
-        {this.props.children}
-      </header>
-    );
-  }
-}
+const Header: React.FC<HeaderProps> = ({ name, ...props }) => {
+  const pageName = `page page-${name}`;
+  return (
+    <header>
+      <h1 className={pageName}>It is {name} page</h1>
+      <Navbar></Navbar>
+      {props.children}
+    </header>
+  );
+};
 
 export default Header;

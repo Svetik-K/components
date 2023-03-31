@@ -7,13 +7,11 @@ type FormCardsListProps = {
   cards: FormCardContent[];
 };
 
-class FormCardsList extends React.Component<FormCardsListProps> {
-  render() {
-    const cardsToRender = this.props.cards.map((card, index) => {
-      return <FormCard key={index} formData={card}></FormCard>;
-    });
-    return <div className="form-cards-list">{cardsToRender}</div>;
-  }
-}
+const FormCardsList: React.FC<FormCardsListProps> = ({ cards }) => {
+  const cardsToRender = cards.map((card, index) => {
+    return <FormCard key={index} formData={card}></FormCard>;
+  });
+  return <div className="form-cards-list">{cardsToRender}</div>;
+};
 
 export default FormCardsList;

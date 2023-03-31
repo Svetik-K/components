@@ -7,11 +7,9 @@ type ButtonProps = {
   onClick?: (e: Event) => void;
 };
 
-class Button extends React.Component<ButtonProps> {
-  render() {
-    const className = `button button-${this.props.name}`;
-    return <button className={className}>{this.props.children}</button>;
-  }
-}
+const Button: React.FC<ButtonProps> = ({ name, ...props }) => {
+  const className = `button button-${name}`;
+  return <button className={className}>{props.children}</button>;
+};
 
 export default Button;

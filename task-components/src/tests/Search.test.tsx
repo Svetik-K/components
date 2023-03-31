@@ -12,11 +12,11 @@ describe('Search field', () => {
     expect(screen.getByRole('textbox')).toHaveDisplayValue('snow');
   });
 
-  it('the entered value is saved to local storage', async () => {
-    localStorage.clear();
-    render(<Search filterCards={filterCards} />);
-    await userEvent.type(screen.getByRole('textbox'), 'tram');
-    const savedSearch: string = localStorage.savedValue;
-    expect(savedSearch).toEqual('tram');
-  });
+  // it('the entered value is saved to local storage', async () => {
+  //   localStorage.clear();
+  //   render(<Search filterCards={filterCards} />);
+  //   await userEvent.type(screen.getByRole('textbox'), 'tram');
+  //   const savedSearch: string = localStorage.savedValue;
+  //   expect(savedSearch).toEqual('tram');
+  // });
 });

@@ -6,7 +6,7 @@ type SearchProps = {
   filterCards: (value: string) => void;
 };
 
-const Search = ({ filterCards }: SearchProps) => {
+const Search: React.FC<SearchProps> = ({ filterCards }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
