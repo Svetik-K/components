@@ -97,6 +97,5 @@ describe('form', () => {
     expect(
       screen.queryByText('Please check the box to agree to our Terms and Policy')
     ).not.toBeInTheDocument();
-    // expect(onSubmitMock).toBeCalled();
   });
 });

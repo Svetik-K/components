@@ -20,29 +20,29 @@ describe('App', () => {
 describe('routing', () => {
   it('rout to About page', async () => {
     render(<App />);
-    expect(screen.getByText(/it is home page/i)).toBeInTheDocument();
+    expect(screen.getByText(/home page/i)).toBeInTheDocument();
     await userEvent.click(screen.getByRole('link', { name: /about us/i }));
-    expect(screen.queryByText(/it is about us page/i)).toBeInTheDocument();
+    expect(screen.queryByText(/about us page/i)).toBeInTheDocument();
   });
 
   it('rout to Home page', async () => {
     render(<App />);
-    expect(screen.getByText(/it is about us page/i)).toBeInTheDocument();
+    expect(screen.getByText(/about us page/i)).toBeInTheDocument();
     await userEvent.click(screen.getByRole('link', { name: /home/i }));
-    expect(screen.queryByText(/it is home page/i)).toBeInTheDocument();
+    expect(screen.queryByText(/home page/i)).toBeInTheDocument();
   });
 
   it('rout to Form page', async () => {
     render(<App />);
-    expect(screen.getByText(/it is home page/i)).toBeInTheDocument();
+    expect(screen.getByText(/home page/i)).toBeInTheDocument();
     await userEvent.click(screen.getByRole('link', { name: /form/i }));
-    expect(screen.queryByText(/it is form page/i)).toBeInTheDocument();
+    expect(screen.queryByText(/form page/i)).toBeInTheDocument();
   });
 
   it('rout to 404 when invalid URL', () => {
     const badRoute = '/page/cards/38374';
     window.history.pushState({}, 'Test page', badRoute);
     render(<App />);
-    expect(screen.getByText(/it is 404 page/i)).toBeInTheDocument();
+    expect(screen.getByText(/404 page/i)).toBeInTheDocument();
   });
 });
