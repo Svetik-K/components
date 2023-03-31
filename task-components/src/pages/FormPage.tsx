@@ -4,7 +4,7 @@ import Header from 'components/Header';
 import React, { useState } from 'react';
 import { FormCardContent } from 'utils/types';
 
-const FormPage = () => {
+const FormPage: React.FC = () => {
   const [createdCards, setCreatedCards] = useState<FormCardContent[]>([]);
 
   const handleSubmit = (formData: FormCardContent): void => {

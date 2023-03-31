@@ -11,7 +11,7 @@ const Header: React.FC<HeaderProps> = ({ name, ...props }) => {
   const pageName = `page page-${name}`;
   return (
     <header>
-      <h1 className={pageName}>It is {name} page</h1>
+      <h1 className={pageName}>{name} page</h1>
       <Navbar></Navbar>
       {props.children}
     </header>

@@ -5,11 +5,11 @@ import CardsList from 'components/CardsList';
 import allCards from '../data/cards.json';
 import { CardContent } from 'utils/types';
 
-const MainPage = () => {
+const MainPage: React.FC = () => {
   const [filteredCards, setFilteredCards] = useState<CardContent[]>([]);
 
   useEffect(() => {
-    const savedValue = localStorage.getItem('savedValue') || '';
+    const savedValue: string = localStorage.getItem('savedValue') || '';
     filterCards(savedValue);
   }, []);
 

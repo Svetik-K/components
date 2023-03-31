@@ -19,7 +19,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
   } = useForm<FormCardContent>();
   const [isValid, setIsValid] = useState(false);
 
-  const onFormSubmit = (data: FormCardContent) => {
+  const onFormSubmit = (data: FormCardContent): void => {
     onSubmit(data);
     setIsValid(true);
     setTimeout(() => {

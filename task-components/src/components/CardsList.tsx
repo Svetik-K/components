@@ -6,6 +6,7 @@ import { CardContent } from 'utils/types';
 type CardsListProps = {
   cards: CardContent[] | [];
 };
+
 const CardsList: React.FC<CardsListProps> = ({ cards }) => {
   const cardsToRender = cards.map((card) => {
     return <Card card={card} key={card.id}></Card>;

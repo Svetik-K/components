@@ -10,9 +10,9 @@ const Search: React.FC<SearchProps> = ({ filterCards }) => {
   const savedValue = localStorage.getItem('savedValue') || '';
   const [searchValue, setSearchValue] = useState(savedValue);
   const search = useRef<HTMLInputElement>(null);
-  const searchRef = search.current as HTMLInputElement;
 
   useEffect(() => {
+    const searchRef = search.current as HTMLInputElement;
     return () => {
       if (searchRef) {
         localStorage.setItem('savedValue', searchRef.value);
@@ -20,8 +20,8 @@ const Search: React.FC<SearchProps> = ({ filterCards }) => {
     };
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const search = e.target.value;
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const search: string = e.target.value;
     setSearchValue(search);
     filterCards(search);
   };
