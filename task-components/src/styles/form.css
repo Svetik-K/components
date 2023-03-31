@@ -132,7 +132,7 @@ input[type="radio"] {
 	width: 13px;
 	height: 13px;
 	border: 1px solid #141414;
-	background-color: transparent;
+	background-color: #FFFFFF;
   border-radius: 50%;
 	cursor: pointer;
 }
@@ -156,7 +156,7 @@ input[type="checkbox"] {
 	width: 15px;
 	height: 15px;
 	border: 1px solid #141414;
-	background-color: transparent;
+	background-color: #FFFFFF;
 	border-radius: 2px;
 	cursor: pointer;
 }

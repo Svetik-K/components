@@ -4,7 +4,7 @@ import Button from './Button';
 import countries from '../data/countries';
 import { FormCardContent } from '../utils/types';
 import { useForm } from 'react-hook-form';
-import { validateTextField, validateBirthDate } from 'utils/helpers';
+import { validateTextField, validateBirthDate } from 'utils/validators';
 
 type FormProps = {
   onSubmit: (formData: FormCardContent) => void;
@@ -21,7 +21,6 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
 
   const onFormSubmit = (data: FormCardContent) => {
     onSubmit(data);
-    console.log(data);
     setIsValid(true);
     setTimeout(() => {
       reset();

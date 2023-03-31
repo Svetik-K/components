@@ -42,32 +42,32 @@ describe('form', () => {
     await screen.findByText('Please check the box to agree to our Terms and Policy');
   });
 
-  // it('should show error message if name input contains numbers', async () => {
-  //   render(<Form onSubmit={onSubmitMock} />);
-  //   const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
-  //   fireEvent.change(nameInput, { target: { value: '918739yiqyuyqi' } });
-  //   const button = screen.getByRole('button', { name: 'Submit' });
-  //   fireEvent.click(button);
-  //   await screen.findByText('Your name should contain only letters');
-  // });
+  it('should show error message if name input contains numbers', async () => {
+    render(<Form onSubmit={onSubmitMock} />);
+    const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
+    fireEvent.change(nameInput, { target: { value: '918739yiqyuyqi' } });
+    const button = screen.getByRole('button', { name: 'Submit' });
+    fireEvent.click(button);
+    await screen.findByText('Your name should contain only letters');
+  });
 
-  // it('should show error message if surname input contains numbers', async () => {
-  //   render(<Form onSubmit={onSubmitMock} />);
-  //   const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
-  //   fireEvent.change(surnameInput, { target: { value: 'ibwe93b46bw8jogw' } });
-  //   const button = screen.getByRole('button', { name: 'Submit' });
-  //   fireEvent.click(button);
-  //   await screen.findByText('Your surname should contain only letters');
-  // });
+  it('should show error message if surname input contains numbers', async () => {
+    render(<Form onSubmit={onSubmitMock} />);
+    const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
+    fireEvent.change(surnameInput, { target: { value: 'ibwe93b46bw8jogw' } });
+    const button = screen.getByRole('button', { name: 'Submit' });
+    fireEvent.click(button);
+    await screen.findByText('Your surname should contain only letters');
+  });
 
-  // it("should show error message if date is more than today's date", async () => {
-  //   render(<Form onSubmit={onSubmitMock} />);
-  //   const birthdate = screen.getByLabelText('Date of birth:*');
-  //   fireEvent.change(birthdate, { target: { value: '2023-10-26' } });
-  //   const button = screen.getByRole('button', { name: 'Submit' });
-  //   fireEvent.click(button);
-  //   await screen.findByText(`The birth date can't be more than today's date`);
-  // });
+  it("should show error message if date is more than today's date", async () => {
+    render(<Form onSubmit={onSubmitMock} />);
+    const birthdate = screen.getByLabelText('Date of birth:*');
+    fireEvent.change(birthdate, { target: { value: '2023-10-26' } });
+    const button = screen.getByRole('button', { name: 'Submit' });
+    fireEvent.click(button);
+    await screen.findByText(`The birth date can not be more than the current date`);
+  });
 
   it('no errors shown after the fields have been filled with relevant data', () => {
     render(<Form onSubmit={onSubmitMock} />);
