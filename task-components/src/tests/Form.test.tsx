@@ -1,8 +1,9 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Form from 'components/Form';
 
 const onSubmitMock = jest.fn();
+const file = new File(['cat'], 'cat.jpg', { type: 'image/jpeg' });
 
 describe('form', () => {
   it('renders all content of the form', () => {
@@ -82,7 +83,6 @@ describe('form', () => {
     const gender = screen.getByRole('radio', { name: 'Female' });
     userEvent.click(gender);
     const fileInput = screen.getByLabelText(/Upload your/i);
-    const file = new File(['cat'], 'cat.jpg', { type: 'image/jpeg' });
     userEvent.upload(fileInput, file);
     const agreement = screen.getByLabelText(/I have read the Terms/i);
     userEvent.click(agreement);
@@ -97,5 +97,36 @@ describe('form', () => {
     expect(
       screen.queryByText('Please check the box to agree to our Terms and Policy')
     ).not.toBeInTheDocument();
+  });
+
+  it('onSubmit is called after submitting relevant data, save message shown, a card is created', () => {
+    render(<Form onSubmit={onSubmitMock} />);
+    const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
+    userEvent.type(nameInput, 'Alexandra');
+    const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
+    userEvent.type(surnameInput, 'Helmquist');
+    const birthDate = screen.getByLabelText('Date of birth:*');
+    fireEvent.change(birthDate, { target: { value: '2012-06-14' } });
+    const select = screen.getByRole('combobox');
+    userEvent.selectOptions(select, 'Japan');
+    const gender = screen.getByRole('radio', { name: 'Female' });
+    userEvent.click(gender);
+    const fileInput = screen.getByLabelText(/Upload your/i);
+    userEvent.upload(fileInput, file);
+    const agreement = screen.getByLabelText(/I have read the Terms/i);
+    userEvent.click(agreement);
+    const button = screen.getByRole('button', { name: 'Submit' });
+    userEvent.click(button);
+    waitFor(() => {
+      expect(onSubmitMock).toBeCalled();
+      expect(screen.getByText(/data have been saved/i)).toBeInTheDocument();
+      expect(screen.getByText(/personal card/i)).toBeInTheDocument();
+      expect(screen.getByAltText(/avatar/i)).toBeInTheDocument();
+      expect(screen.getByText(/Alexandra/i)).toBeInTheDocument();
+      expect(screen.getByText(/Helmquist/i)).toBeInTheDocument();
+      expect(screen.getByText(/Female/i)).toBeInTheDocument();
+      expect(screen.getByText(/2012-06-14/i)).toBeInTheDocument();
+      expect(screen.getByText(/Japan/i)).toBeInTheDocument();
+    });
   });
 });
