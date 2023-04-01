@@ -1,0 +1,15 @@
+.links-list {
+  display: flex;
+}
+
+.list-item {
+	padding-left: 40px;
+}
+
+.nav-link {
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 1.4rem;
+	font-weight: 500;
+	transition: 0.3s;
+}
