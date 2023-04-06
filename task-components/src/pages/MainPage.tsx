@@ -1,33 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Search from 'components/Search';
-import CardsList from 'components/CardsList';
-import allCards from '../data/cards.json';
-import { CardContent } from 'utils/types';
+import { ApiCardContent } from 'utils/types';
+import axios from 'axios';
+import ApiCardsList from 'components/ApiCardsList';
 
 const MainPage: React.FC = () => {
-  const [filteredCards, setFilteredCards] = useState<CardContent[]>([]);
+  const [characters, setCharacters] = useState<ApiCardContent[]>([]);
 
   useEffect(() => {
     const savedValue: string = localStorage.getItem('savedValue') || '';
-    filterCards(savedValue);
+    fetchChars(savedValue);
   }, []);
 
-  function filterCards(value: string): void {
-    const filtered = allCards.filter(
-      (card) =>
-        card.title.toLowerCase().includes(value.toLowerCase()) ||
-        card.designer.toLowerCase().includes(value.toLowerCase()) ||
-        card.categories.toLowerCase().includes(value.toLowerCase())
-    );
-    setFilteredCards(filtered);
-  }
+  const fetchChars = async (query?: string) => {
+    const data = await axios
+      .get(`https://rickandmortyapi.com/api/character?name=${query}`)
+      .then((res) => res.data.results);
+    setCharacters(data);
+    console.log(data);
+  };
 
   return (
     <div>
       <Header name="Home"></Header>
-      <Search filterCards={filterCards}></Search>
-      <CardsList cards={filteredCards}></CardsList>
+      <Search fetchChars={fetchChars}></Search>
+      <ApiCardsList cards={characters}></ApiCardsList>
     </div>
   );
 };

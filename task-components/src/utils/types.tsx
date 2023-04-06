@@ -30,3 +30,9 @@ export interface CardContent {
   likes: string;
   views: string;
 }
+
+export interface ApiCardContent {
+  id: number;
+  name: string;
+  image: string;
+}

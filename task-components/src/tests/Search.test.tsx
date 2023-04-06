@@ -4,11 +4,11 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from 'App';
 
-const filterCards = jest.fn();
+const fetchChars = jest.fn();
 
 describe('Search field', () => {
   it('the value is entered in the search field', async () => {
-    render(<Search filterCards={filterCards} />);
+    render(<Search fetchChars={fetchChars} />);
     await userEvent.type(screen.getByRole('textbox'), 'snow');
     expect(screen.getByRole('textbox')).toHaveDisplayValue('snow');
   });

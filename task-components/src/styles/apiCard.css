@@ -1,0 +1,30 @@
+.api-card {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	cursor: pointer;
+}
+
+.api-card-image {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	border-radius: 10px;
+}
+
+.api-card-name {
+	position: absolute;
+	top: 20px;
+	left: 0;
+	font-size: 2.2rem;
+	line-height: 2.6rem;
+	font-weight: 500;
+	color: #FFFFFF;
+	background-color: rgba(0,0,0, 0.5);
+	padding: 20px 20px 20px 10px;
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+}

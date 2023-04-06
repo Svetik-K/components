@@ -1,12 +1,12 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import Button from './Button';
 import '../styles/search.css';
 
 type SearchProps = {
-  filterCards: (value: string) => void;
+  fetchChars: (value: string) => void;
 };
 
-const Search: React.FC<SearchProps> = ({ filterCards }) => {
+const Search: React.FC<SearchProps> = ({ fetchChars }) => {
   const savedValue = localStorage.getItem('savedValue') || '';
   const [searchValue, setSearchValue] = useState(savedValue);
   const search = useRef<HTMLInputElement>(null);
@@ -18,16 +18,21 @@ const Search: React.FC<SearchProps> = ({ filterCards }) => {
         localStorage.setItem('savedValue', searchRef.value);
       }
     };
-  });
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const search: string = e.target.value;
-    setSearchValue(search);
-    filterCards(search);
+    const searchParam: string = e.target.value;
+    search.current!.value = searchParam;
+    setSearchValue(searchParam);
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    fetchChars(search.current!.value);
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div className="search-bar">
         <input
           type="text"
@@ -37,9 +42,9 @@ const Search: React.FC<SearchProps> = ({ filterCards }) => {
           onChange={handleChange}
           ref={search}
         />
-        <Button name="search"></Button>
+        <Button name="search" type="submit"></Button>
       </div>
-    </div>
+    </form>
   );
 };
 
