@@ -12,12 +12,7 @@ const Search: React.FC<SearchProps> = ({ fetchChars }) => {
   const search = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const searchRef = search.current as HTMLInputElement;
-    return () => {
-      if (searchRef) {
-        localStorage.setItem('savedValue', searchRef.value);
-      }
-    };
+    fetchChars(savedValue);
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -28,7 +23,9 @@ const Search: React.FC<SearchProps> = ({ fetchChars }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    fetchChars(search.current!.value);
+    const curSearch = search.current!.value;
+    fetchChars(curSearch);
+    localStorage.setItem('savedValue', curSearch);
   };
 
   return (

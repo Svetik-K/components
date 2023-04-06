@@ -30,3 +30,7 @@ button {
   outline: none;
   cursor: pointer;
 }
+
+body {
+  position: relative;
+}
