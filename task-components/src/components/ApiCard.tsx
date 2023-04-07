@@ -32,11 +32,11 @@ const ApiCard: React.FC<ApiCardProps> = ({ apiCard }) => {
 
   const openModal = () => {
     getCharacter(id);
-    setModalShown(!modalShown);
+    setModalShown(true);
   };
 
   const closeModal = () => {
-    setModalShown(!modalShown);
+    setModalShown(false);
   };
 
   const getCharacter = async (id: number) => {
@@ -46,12 +46,14 @@ const ApiCard: React.FC<ApiCardProps> = ({ apiCard }) => {
   };
 
   return (
-    <div className="api-card" key={id} onClick={openModal}>
-      <div className="api-card-image">
-        <img className="api-card-picture" src={image} alt={name} />
+    <div>
+      <div className="api-card" key={id} onClick={openModal}>
+        <div className="api-card-image">
+          <img className="api-card-picture" src={image} alt={name} />
+        </div>
+        <p className="api-card-name">{name}</p>
       </div>
-      <p className="api-card-name">{name}</p>
-      <CardModal curState={modalShown} charInfo={character} handleAction={closeModal} />
+      <CardModal curState={modalShown} charInfo={character} handleClose={closeModal} />
     </div>
   );
 };
