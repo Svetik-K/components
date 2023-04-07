@@ -27,7 +27,7 @@ const MainPage: React.FC = () => {
       });
     setTimeout(() => {
       setLoading(false);
-    }, 1700);
+    }, 1100);
   };
 
   return (

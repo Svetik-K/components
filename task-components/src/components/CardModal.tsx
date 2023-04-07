@@ -1,7 +1,6 @@
 import React from 'react';
 import { Character } from 'utils/types';
 import '../styles/modal.css';
-import Button from './Button';
 
 type CardModalProps = {
   charInfo: Character;
@@ -12,10 +11,14 @@ type CardModalProps = {
 const CardModal: React.FC<CardModalProps> = ({ charInfo, curState, handleClose }) => {
   const { name, image, gender, species, status, origin, location } = charInfo;
   return (
-    <div className={curState ? `overlay active` : `overlay`} onClick={handleClose}>
+    <div className={curState ? `overlay active` : `overlay`}>
+      <div className="modal-bg" onClick={handleClose}></div>
       <div className="modal">
-        <h3 className="modal-title">Personal file</h3>
-        <div className="modal-upper">
+        <div className="modal-header">
+          <h3 className="modal-title">Personal file</h3>
+          <button className="button button-close" onClick={handleClose}></button>
+        </div>
+        <div className="modal-content">
           <img src={image} alt={name} className="modal-image" />
           <div className="modal-info">
             <p className="modal-name">{name}</p>
@@ -26,7 +29,6 @@ const CardModal: React.FC<CardModalProps> = ({ charInfo, curState, handleClose }
             <p className="modal-location">Location: {location.name}</p>
           </div>
         </div>
-        <Button name="close" onClick={handleClose}></Button>
       </div>
     </div>
   );

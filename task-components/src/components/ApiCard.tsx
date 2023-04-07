@@ -35,7 +35,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ apiCard }) => {
     setModalShown(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setModalShown(false);
   };
 

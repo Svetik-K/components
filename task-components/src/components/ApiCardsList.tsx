@@ -14,7 +14,9 @@ const ApiCardsList: React.FC<ApiCardsListProps> = ({ cards }) => {
   const content = cardsToRender?.length ? (
     cardsToRender
   ) : (
-    <div className="no-matches">Sorry... No matches found</div>
+    <div className="not-found">
+      <p className="no-matches">Sorry... No matches found</p>
+    </div>
   );
   return <div className="cards-list">{content}</div>;
 };
