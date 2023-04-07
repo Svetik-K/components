@@ -30,8 +30,8 @@ const ApiCard: React.FC<ApiCardProps> = ({ apiCard }) => {
   const [character, setCharacter] = useState(initData);
   const { id, name, image } = apiCard;
 
-  const openModal = () => {
-    getCharacter(id);
+  const openModal = async () => {
+    await getCharacter(id);
     setModalShown(true);
   };
 
