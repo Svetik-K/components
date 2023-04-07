@@ -9,11 +9,11 @@ import Loader from 'components/Loader';
 const MainPage: React.FC = () => {
   const [characters, setCharacters] = useState<ApiCardContent[]>([]);
   const [isLoading, setLoading] = useState(true);
-  const savedValue = localStorage.getItem('savedValue') || '';
 
   useEffect(() => {
+    const savedValue = localStorage.getItem('savedValue') || '';
     fetchChars(savedValue);
-  }, [savedValue]);
+  }, []);
 
   const fetchChars = async (query?: string) => {
     setLoading(true);
@@ -27,7 +27,7 @@ const MainPage: React.FC = () => {
       });
     setTimeout(() => {
       setLoading(false);
-    }, 3500);
+    }, 1700);
   };
 
   return (

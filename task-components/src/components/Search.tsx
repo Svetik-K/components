@@ -13,7 +13,6 @@ const Search: React.FC<SearchProps> = ({ fetchChars }) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const searchParam: string = e.target.value;
-    search.current!.value = searchParam;
     setSearchValue(searchParam);
   };
 

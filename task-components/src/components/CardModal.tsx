@@ -1,16 +1,16 @@
 import React from 'react';
-import { ApiCardContent } from 'utils/types';
+import { Character } from 'utils/types';
 import '../styles/modal.css';
 import Button from './Button';
 
 type CardModalprops = {
-  charInfo: ApiCardContent;
+  charInfo: Character;
   curState: boolean;
   handleAction: () => void;
 };
 
 const CardModal: React.FC<CardModalprops> = ({ charInfo, curState, handleAction }) => {
-  const { name, image, gender, species, status, origin } = charInfo;
+  const { name, image, gender, species, status, origin, location } = charInfo;
   const curClass = curState ? `overlay active` : `overlay`;
   return (
     <div className={curClass}>
@@ -24,6 +24,7 @@ const CardModal: React.FC<CardModalprops> = ({ charInfo, curState, handleAction 
             <p className="modal-species">Species: {species}</p>
             <p className="modal-status">Status: {status}</p>
             <p className="modal-origin">Origin: {origin.name}</p>
+            <p className="modal-location">Location: {location.name}</p>
           </div>
         </div>
         <Button name="close" onClick={handleAction}></Button>
