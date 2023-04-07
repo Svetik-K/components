@@ -4,12 +4,12 @@ import { ApiCardContent } from 'utils/types';
 import ApiCard from './ApiCard';
 
 type ApiCardsListProps = {
-  cards: ApiCardContent[] | undefined;
+  cards: ApiCardContent[] | [];
 };
 
 const ApiCardsList: React.FC<ApiCardsListProps> = ({ cards }) => {
   const cardsToRender = cards?.map((card) => {
-    return <ApiCard card={card} key={card.id}></ApiCard>;
+    return <ApiCard apiCard={card} key={card.id}></ApiCard>;
   });
   const content = cardsToRender?.length ? (
     cardsToRender

@@ -1,5 +1,5 @@
 .loader {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -8,7 +8,7 @@
   align-items: center;
   height: 100vh;
   overflow: hidden;
-  background: #FFFFFF;
+  background: #dddddd;
 }
 
 .circle {
@@ -32,47 +32,47 @@
 }
 
 .circle-1 {
-  background-color: #49b8e5;
+  background-color: #4d4d4d;
 }
 
 .circle-1:before {
-  background-color: #49b8e5;
+  background-color: #4d4d4d;
   animation-delay: 200ms;
 }
 
 .circle-2 {
-  background-color: #1e98d4;
+  background-color: #3c3c3c;
 }
 
 .circle-2:before {
-  background-color: #1e98d4;
+  background-color: #3c3c3c;
   animation-delay: 400ms;
 }
 
 .circle-3 {
-  background-color: #2a92d0;
+  background-color: #1e1e1e;
 }
 
 .circle-3:before {
-  background-color: #2a92d0;
+  background-color: #1e1e1e;
   animation-delay: 600ms;
 }
 
 .circle-4 {
-  background-color: #3a88c8;
+  background-color: #111111;
 }
 
 .circle-4:before {
-  background-color: #3a88c8;
+  background-color: #111111;
   animation-delay: 800ms;
 }
 
 .circle-5 {
-  background-color: #507cbe;
+  background-color: #000000;
 }
 
 .circle-5:before {
-  background-color: #507cbe;
+  background-color: #000000;
   animation-delay: 1000ms;
 }
 

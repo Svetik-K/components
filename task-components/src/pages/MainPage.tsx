@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Search from 'components/Search';
 import { ApiCardContent } from 'utils/types';
@@ -9,6 +9,11 @@ import Loader from 'components/Loader';
 const MainPage: React.FC = () => {
   const [characters, setCharacters] = useState<ApiCardContent[]>([]);
   const [isLoading, setLoading] = useState(true);
+  const savedValue = localStorage.getItem('savedValue') || '';
+
+  useEffect(() => {
+    fetchChars(savedValue);
+  }, [savedValue]);
 
   const fetchChars = async (query?: string) => {
     setLoading(true);

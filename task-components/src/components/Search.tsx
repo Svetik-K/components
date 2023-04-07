@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import Button from './Button';
 import '../styles/search.css';
 
@@ -10,10 +10,6 @@ const Search: React.FC<SearchProps> = ({ fetchChars }) => {
   const savedValue = localStorage.getItem('savedValue') || '';
   const [searchValue, setSearchValue] = useState(savedValue);
   const search = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    fetchChars(savedValue);
-  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const searchParam: string = e.target.value;
