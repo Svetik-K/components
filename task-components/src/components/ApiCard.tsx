@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ApiCardContent, Character } from 'utils/types';
 import '../styles/apiCard.css';
 import CardModal from './CardModal';
-import axios, { AxiosResponse } from 'axios';
 
 type ApiCardProps = {
   apiCard: ApiCardContent;
@@ -40,9 +39,9 @@ const ApiCard: React.FC<ApiCardProps> = ({ apiCard }) => {
   };
 
   const getCharacter = async (id: number) => {
-    await axios
-      .get(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((res: AxiosResponse) => setCharacter(res.data));
+    await fetch(`https://rickandmortyapi.com/api/character/${id}`)
+      .then((res) => res.json())
+      .then((data) => setCharacter(data));
   };
 
   return (

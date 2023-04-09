@@ -34,7 +34,7 @@ const Search: React.FC<SearchProps> = ({ fetchChars }) => {
           onChange={handleChange}
           ref={search}
         />
-        <Button name="search" type="submit"></Button>
+        <Button name="search" type="submit" data-testid="search-button"></Button>
       </div>
     </form>
   );

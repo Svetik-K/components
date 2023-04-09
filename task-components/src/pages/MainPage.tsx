@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Search from 'components/Search';
 import { ApiCardContent } from 'utils/types';
-import axios, { AxiosError, AxiosResponse } from 'axios';
 import ApiCardsList from 'components/ApiCardsList';
 import Loader from 'components/Loader';
 
@@ -17,10 +16,10 @@ const MainPage: React.FC = () => {
 
   const fetchChars = async (query?: string) => {
     setLoading(true);
-    await axios
-      .get(`https://rickandmortyapi.com/api/character?name=${query}`)
-      .then((res: AxiosResponse) => setCharacters(res.data.results))
-      .catch((err: AxiosError) => {
+    await fetch(`https://rickandmortyapi.com/api/character?name=${query}`)
+      .then((res) => res.json())
+      .then((data) => setCharacters(data.results))
+      .catch((err) => {
         if (err.response?.status === 404) {
           setCharacters([]);
         }

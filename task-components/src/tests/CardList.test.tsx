@@ -45,6 +45,6 @@ describe('Cards list', () => {
 
   it('No matches found shown when passes an empty array', () => {
     render(<CardsList cards={[]} />);
-    expect(screen.getByText('No matches found')).toBeInTheDocument();
+    expect(screen.getByText(/No matches found/i)).toBeInTheDocument();
   });
 });

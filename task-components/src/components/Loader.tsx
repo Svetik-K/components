@@ -3,7 +3,7 @@ import '../styles/loader.css';
 
 const Loader: React.FC = () => {
   return (
-    <div className="loader">
+    <div className="loader" data-testid="preloader">
       <div className="circle circle-1"></div>
       <div className="circle circle-2"></div>
       <div className="circle circle-3"></div>

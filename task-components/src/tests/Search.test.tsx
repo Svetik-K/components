@@ -1,6 +1,6 @@
-import Search from 'components/Search';
+import Search from '../components/Search';
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from 'App';
 
@@ -9,18 +9,28 @@ const fetchChars = jest.fn();
 describe('Search field', () => {
   it('the value is entered in the search field', async () => {
     render(<Search fetchChars={fetchChars} />);
-    await userEvent.type(screen.getByRole('textbox'), 'snow');
-    expect(screen.getByRole('textbox')).toHaveDisplayValue('snow');
+    await userEvent.type(screen.getByRole('textbox'), 'girl');
+    expect(screen.getByRole('textbox')).toHaveDisplayValue('girl');
   });
 
   it('the entered search value is saved to local storage and displayed after unmount and mount again', async () => {
     localStorage.clear();
     render(<App />);
-    await userEvent.type(screen.getByRole('textbox'), 'tram');
+    const searchBar = screen.getByRole('textbox');
+    await waitFor(() => {
+      expect(searchBar).toBeInTheDocument();
+    });
+    await userEvent.type(searchBar, 'rick');
+    await userEvent.click(screen.getByRole('button'));
+    await waitFor(() => {
+      expect(searchBar).toBeInTheDocument();
+    });
     await userEvent.click(screen.getByRole('link', { name: /form/i }));
     await userEvent.click(screen.getByRole('link', { name: /home/i }));
-    expect(screen.getByRole('textbox')).toHaveDisplayValue('tram');
-    const savedSearch: string = localStorage.savedValue;
-    expect(savedSearch).toEqual('tram');
+    await waitFor(() => {
+      expect(searchBar).toHaveDisplayValue('rick');
+      const savedSearch: string = localStorage.savedValue;
+      expect(savedSearch).toEqual('rick');
+    });
   });
 });

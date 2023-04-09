@@ -4,7 +4,11 @@ import AboutPage from './pages/AboutPage';
 import NotFound from './pages/NotFound';
 import FormPage from 'pages/FormPage';
 
-function App() {
+export type AppProps = {
+  url?: string;
+};
+
+const App: React.FC<AppProps> = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -15,6 +19,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
