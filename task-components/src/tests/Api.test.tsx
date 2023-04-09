@@ -4,8 +4,9 @@ import { setupServer } from 'msw/node';
 import { render, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from '../App';
+import { ApiCardContent } from 'utils/types';
 
-const chars = [
+const chars: ApiCardContent[] = [
   {
     id: 1,
     name: 'Rick Sanchez',
@@ -38,7 +39,7 @@ test('loads and displays cards', async () => {
     expect(screen.getByText(/Morty Smith/i)).toBeInTheDocument();
     expect(screen.getByAltText(/Morty Smith/i)).toBeInTheDocument();
     expect(screen.queryByText(/Trunk Man/i)).not.toBeInTheDocument();
-    expect(screen.queryByAltText(/Ruben/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/no matches found/i)).not.toBeInTheDocument();
   });
 });
 
