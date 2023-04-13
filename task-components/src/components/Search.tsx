@@ -1,5 +1,7 @@
-import React, { ChangeEvent, FormEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import Button from './Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSearch, selectSearch } from './searchSlice';
 import '../styles/search.css';
 
 type SearchProps = {
@@ -7,9 +9,18 @@ type SearchProps = {
 };
 
 const Search: React.FC<SearchProps> = ({ fetchChars }) => {
-  const savedValue = localStorage.getItem('savedValue') || '';
-  const [searchValue, setSearchValue] = useState(savedValue);
+  const dispatch = useDispatch();
+  const saved = useSelector(selectSearch);
+  const [searchValue, setSearchValue] = useState(saved || '');
   const search = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    return () => {
+      if (search.current) {
+        dispatch(addSearch(search.current.value));
+      }
+    };
+  });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const searchParam: string = e.target.value;
@@ -18,9 +29,7 @@ const Search: React.FC<SearchProps> = ({ fetchChars }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const curSearch = search.current!.value;
-    fetchChars(curSearch);
-    localStorage.setItem('savedValue', curSearch);
+    fetchChars(searchValue);
   };
 
   return (

@@ -4,13 +4,17 @@ import Search from 'components/Search';
 import { ApiCardContent } from 'utils/types';
 import ApiCardsList from 'components/ApiCardsList';
 import Loader from 'components/Loader';
+import { selectSearch } from '../components/searchSlice';
+import { useSelector } from 'react-redux';
 
 const MainPage: React.FC = () => {
   const [characters, setCharacters] = useState<ApiCardContent[]>([]);
   const [isLoading, setLoading] = useState(true);
+  const saved = useSelector(selectSearch);
+  const savedValue = saved || '';
 
   useEffect(() => {
-    const savedValue = localStorage.getItem('savedValue') || '';
+    const savedValue = saved || '';
     fetchChars(savedValue);
   }, []);
 
