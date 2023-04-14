@@ -32,7 +32,7 @@ const MainPage: React.FC = () => {
       <Search></Search>
       {data && <ApiCardsList cards={data.results}></ApiCardsList>}
       {isLoading && <Loader />}
-      {!data && <div>Something went wrong</div>}
+      {!data && <div>Something went wrong...</div>}
     </div>
   );
 };

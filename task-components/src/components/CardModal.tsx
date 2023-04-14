@@ -1,35 +1,43 @@
 import React from 'react';
-import { Character } from 'utils/types';
 import '../styles/modal.css';
+import { useGetCharacterByIdQuery } from 'pages/ApiSlice';
 
 type CardModalProps = {
-  charInfo: Character;
+  charId: number;
   curState: boolean;
   handleClose: () => void;
 };
 
-const CardModal: React.FC<CardModalProps> = ({ charInfo, curState, handleClose }) => {
-  const { name, image, gender, species, status, origin, location } = charInfo;
+const CardModal: React.FC<CardModalProps> = ({ charId, curState, handleClose }) => {
+  const { data, error, isLoading } = useGetCharacterByIdQuery(charId);
   return (
     <div className={curState ? `overlay active` : `overlay`}>
-      <div className="modal-bg" onClick={handleClose}></div>
-      <div className="modal">
-        <div className="modal-header">
-          <h3 className="modal-title">Personal file</h3>
-          <button className="button button-close" onClick={handleClose}></button>
-        </div>
-        <div className="modal-content">
-          <img src={image} alt={name} className="modal-image" />
-          <div className="modal-info">
-            <p className="modal-name">{name}</p>
-            <p className="modal-gender">Gender: {gender}</p>
-            <p className="modal-species">Species: {species}</p>
-            <p className="modal-status">Status: {status}</p>
-            <p className="modal-origin">Origin: {origin.name}</p>
-            <p className="modal-location">Location: {location.name}</p>
+      {error ? (
+        <div>Something went wrong...</div>
+      ) : isLoading ? (
+        <div>Loading...</div>
+      ) : data ? (
+        <>
+          <div className="modal-bg" onClick={handleClose}></div>
+          <div className="modal">
+            <div className="modal-header">
+              <h3 className="modal-title">Personal file</h3>
+              <button className="button button-close" onClick={handleClose}></button>
+            </div>
+            <div className="modal-content">
+              <img src={data.image} alt={data.name} className="modal-image" />
+              <div className="modal-info">
+                <p className="modal-name">{data.name}</p>
+                <p className="modal-gender">Gender: {data.gender}</p>
+                <p className="modal-species">Species: {data.species}</p>
+                <p className="modal-status">Status: {data.status}</p>
+                <p className="modal-origin">Origin: {data.origin.name}</p>
+                <p className="modal-location">Location: {data.location.name}</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      ) : null}
     </div>
   );
 };
