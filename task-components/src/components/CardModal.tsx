@@ -1,11 +1,13 @@
 import React from 'react';
 import '../styles/modal.css';
-import { useGetCharacterByIdQuery } from 'pages/ApiSlice';
+import { useGetCharacterByIdQuery } from 'slices/ApiSlice';
+import Loader from './Loader';
 
 type CardModalProps = {
   charId: number;
   curState: boolean;
   handleClose: () => void;
+  children?: React.ReactNode;
 };
 
 const CardModal: React.FC<CardModalProps> = ({ charId, curState, handleClose }) => {
@@ -13,9 +15,9 @@ const CardModal: React.FC<CardModalProps> = ({ charId, curState, handleClose }) 
   return (
     <div className={curState ? `overlay active` : `overlay`}>
       {error ? (
-        <div>Something went wrong...</div>
+        <div className="modal-error">Oops... Something went wrong...</div>
       ) : isLoading ? (
-        <div>Loading...</div>
+        <Loader />
       ) : data ? (
         <>
           <div className="modal-bg" onClick={handleClose}></div>

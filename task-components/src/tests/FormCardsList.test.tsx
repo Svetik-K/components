@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import FormCardsList from 'components/FormCardsList';
 import { FormCardContent } from 'utils/types';
 
-// const file = new File(['cat'], 'cat.jpg', { type: 'image/jpeg' });
 const newCards: FormCardContent[] = [
   {
     username: 'Karina',
@@ -11,7 +10,7 @@ const newCards: FormCardContent[] = [
     birthday: '2010-08-12',
     country: 'Sweden',
     gender: 'Female',
-    image: null,
+    image: '../mock/rick.png',
     agreement: true,
   },
   {
@@ -20,7 +19,7 @@ const newCards: FormCardContent[] = [
     birthday: '2000-04-25',
     country: 'Brasil',
     gender: 'Male',
-    image: null,
+    image: '../mock/kitty.png',
     agreement: true,
   },
 ];

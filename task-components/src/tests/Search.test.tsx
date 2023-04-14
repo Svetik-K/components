@@ -4,17 +4,16 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from 'App';
 
-const fetchChars = jest.fn();
+// const fetchChars = jest.fn();
 
 describe('Search field', () => {
   it('the value is entered in the search field', async () => {
-    render(<Search fetchChars={fetchChars} />);
+    render(<Search />);
     await userEvent.type(screen.getByRole('textbox'), 'girl');
     expect(screen.getByRole('textbox')).toHaveDisplayValue('girl');
   });
 
-  it('the entered search value is saved to local storage and displayed after unmount and mount again', async () => {
-    localStorage.clear();
+  it('the entered search value is saved to the store and displayed after unmount and mount again', async () => {
     render(<App />);
     const searchBar = screen.getByRole('textbox');
     await waitFor(() => {
@@ -29,8 +28,6 @@ describe('Search field', () => {
     await userEvent.click(screen.getByRole('link', { name: /home/i }));
     await waitFor(() => {
       expect(searchBar).toHaveDisplayValue('rick');
-      const savedSearch: string = localStorage.savedValue;
-      expect(savedSearch).toEqual('rick');
     });
   });
 });

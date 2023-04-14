@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ApiCardContent, Character } from 'utils/types';
+import { ApiCardContent } from 'utils/types';
 import '../styles/apiCard.css';
 import CardModal from './CardModal';
 

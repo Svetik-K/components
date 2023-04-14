@@ -7,7 +7,7 @@ const file = new File(['cat'], 'cat.jpg', { type: 'image/jpeg' });
 
 describe('form', () => {
   it('renders all content of the form', () => {
-    render(<Form onSubmit={onSubmitMock} />);
+    render(<Form createCards={onSubmitMock} />);
     expect(screen.getByRole('heading', { name: 'Fill in the form below' })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Name:*' })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Surname:*' })).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe('form', () => {
   });
 
   it('renders all error messages when submit an empty form', async () => {
-    render(<Form onSubmit={onSubmitMock} />);
+    render(<Form createCards={onSubmitMock} />);
     const button = screen.getByRole('button', { name: 'Submit' });
     fireEvent.click(button);
     await screen.findByText('Please enter your name');
@@ -44,7 +44,7 @@ describe('form', () => {
   });
 
   it('should show error message if name input contains numbers', async () => {
-    render(<Form onSubmit={onSubmitMock} />);
+    render(<Form createCards={onSubmitMock} />);
     const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
     fireEvent.change(nameInput, { target: { value: '918739yiqyuyqi' } });
     const button = screen.getByRole('button', { name: 'Submit' });
@@ -53,7 +53,7 @@ describe('form', () => {
   });
 
   it('should show error message if surname input contains numbers', async () => {
-    render(<Form onSubmit={onSubmitMock} />);
+    render(<Form createCards={onSubmitMock} />);
     const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
     fireEvent.change(surnameInput, { target: { value: 'ibwe93b46bw8jogw' } });
     const button = screen.getByRole('button', { name: 'Submit' });
@@ -62,7 +62,7 @@ describe('form', () => {
   });
 
   it("should show error message if date is more than today's date", async () => {
-    render(<Form onSubmit={onSubmitMock} />);
+    render(<Form createCards={onSubmitMock} />);
     const birthdate = screen.getByLabelText('Date of birth:*');
     fireEvent.change(birthdate, { target: { value: '2023-10-26' } });
     const button = screen.getByRole('button', { name: 'Submit' });
@@ -71,7 +71,7 @@ describe('form', () => {
   });
 
   it('no errors shown after the fields have been filled with relevant data', () => {
-    render(<Form onSubmit={onSubmitMock} />);
+    render(<Form createCards={onSubmitMock} />);
     const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
     userEvent.type(nameInput, 'Michaella');
     const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
@@ -100,7 +100,7 @@ describe('form', () => {
   });
 
   it('onSubmit is called after submitting relevant data, save message shown, a card is created', () => {
-    render(<Form onSubmit={onSubmitMock} />);
+    render(<Form createCards={onSubmitMock} />);
     const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
     userEvent.type(nameInput, 'Alexandra');
     const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });

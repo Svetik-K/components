@@ -3,7 +3,7 @@ import FormCardsList from 'components/FormCardsList';
 import Header from 'components/Header';
 import React from 'react';
 import { FormCardContent } from 'utils/types';
-import { addFormCards, selectFormCards } from './formPageSlice';
+import { addFormCards, selectFormCards } from '../slices/formPageSlice';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 
 const FormPage: React.FC = () => {

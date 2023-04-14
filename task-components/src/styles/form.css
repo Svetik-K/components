@@ -6,15 +6,17 @@
 	border-radius: 5px;
 	padding: 20px 30px;
 	margin-top: 10px;
-	background: url(../../public/assets/images/kitties.png) #f9f9f9;
-	background-position: right 20px bottom 10px;
+	background: url(../../public/assets/images/morty.png) #f9f9f9;
+	background-position: right 20px bottom 20px;
 	background-repeat: no-repeat;
 	background-size: 20%;
 }
 
 .form-title {
 	text-align: center;
+	font-size: 1.8rem;
 	margin-bottom: 20px;
+	color: #34FE0A;
 }
 
 label,

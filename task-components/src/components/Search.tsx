@@ -1,6 +1,6 @@
-import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import Button from './Button';
-import { addSearch, selectSearch } from './searchSlice';
+import { addSearch, selectSearch } from '../slices/searchSlice';
 import '../styles/search.css';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 
@@ -14,15 +14,6 @@ const Search: React.FC = () => {
   const [searchValue, setSearchValue] = useState(saved || '');
   const search = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const curInput = search.current as HTMLInputElement;
-    return () => {
-      if (curInput) {
-        dispatch(addSearch(curInput.value));
-      }
-    };
-  }, []);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const searchParam: string = e.target.value;
     setSearchValue(searchParam);
@@ -30,7 +21,7 @@ const Search: React.FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // fetchChars(searchValue);
+    dispatch(addSearch(search.current!.value));
   };
 
   return (

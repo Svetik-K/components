@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import searchReducer from '../components/searchSlice';
-import mainPageReducer from '../pages/mainPageSlice';
-import formPageReducer from '../pages/formPageSlice';
-import { cardsApi } from 'pages/ApiSlice';
+import searchReducer from '../slices/searchSlice';
+import mainPageReducer from '../slices/mainPageSlice';
+import formPageReducer from '../slices/formPageSlice';
+import { cardsApi } from 'slices/ApiSlice';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 const store = configureStore({

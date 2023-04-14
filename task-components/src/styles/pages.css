@@ -14,3 +14,11 @@
 	background-repeat: no-repeat;
 	background-size: contain;
 }
+
+.home-error,
+.modal-error {
+	font-size: 3.8rem;
+	font-weight: 500;
+	margin-top: 50px;
+	text-align: center;
+}

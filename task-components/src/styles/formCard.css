@@ -4,8 +4,8 @@
   padding: 10px 25px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 5px;
-  background: url(../../public/assets/images/kitty.png) #f9f9f9;
-  background-position: right 10px bottom 10px;
+  background: url(../../public/assets/images/rick_face.png) #f9f9f9;
+  background-position: right 10px bottom 5px;
   background-repeat: no-repeat;
   background-size: 20%;
 }
@@ -14,6 +14,7 @@
   font-size: 1.6rem;
   text-align: center;
   margin-bottom: 15px;
+  color: #34FE0A;
 }
 
 .form-card-image {
