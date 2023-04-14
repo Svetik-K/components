@@ -9,7 +9,7 @@ type FormCardsListProps = {
 
 const FormCardsList: React.FC<FormCardsListProps> = ({ cards }) => {
   const cardsToRender = cards.map((card, index) => {
-    return <FormCard key={index} formData={card}></FormCard>;
+    return <FormCard key={index} cardContent={card}></FormCard>;
   });
   return <div className="form-cards-list">{cardsToRender}</div>;
 };

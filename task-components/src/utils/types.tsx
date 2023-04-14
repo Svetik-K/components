@@ -1,10 +1,20 @@
-export interface FormCardContent {
+export interface FormCardValues {
   username: string;
   surname: string;
   birthday: string;
   country: string;
   gender: string;
   image: FileList | null;
+  agreement: boolean;
+}
+
+export interface FormCardContent {
+  username: string;
+  surname: string;
+  birthday: string;
+  country: string;
+  gender: string;
+  image: string;
   agreement: boolean;
 }
 

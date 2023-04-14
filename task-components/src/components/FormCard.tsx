@@ -1,28 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormCardContent } from '../utils/types';
 import '../styles/formCard.css';
 
 type FormCardProps = {
-  formData: FormCardContent;
+  cardContent: FormCardContent;
 };
 
-const FormCard: React.FC<FormCardProps> = ({ formData }) => {
-  const [imageUrl, setImageUrl] = useState('');
-  const { username, surname, gender, birthday, country } = formData;
-  const reader = new FileReader();
-  reader.onload = () => {
-    const resultUrl = reader.result as string;
-    setImageUrl(resultUrl);
-  };
-  if (formData.image) {
-    reader.readAsDataURL(formData.image[0]);
-  }
+const FormCard: React.FC<FormCardProps> = ({ cardContent }) => {
+  const { username, surname, gender, birthday, country, image } = cardContent;
 
   return (
     <div className="form-card">
       <h3 className="form-card-title">Personal card</h3>
       <div className="form-card-upper">
-        {imageUrl && <img src={imageUrl} alt="avatar" className="form-card-image" />}
+        {image && <img src={image} alt="avatar" className="form-card-image" />}
         <div>
           <p className="form-card-name">{username}</p>
           <p className="form-card-surname">{surname}</p>

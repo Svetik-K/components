@@ -1,26 +1,27 @@
 import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import Button from './Button';
-import { useDispatch, useSelector } from 'react-redux';
 import { addSearch, selectSearch } from './searchSlice';
 import '../styles/search.css';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
 
-type SearchProps = {
-  fetchChars: (value: string) => void;
-};
+// type SearchProps = {
+//   fetchChars: (value: string) => void;
+// };
 
-const Search: React.FC<SearchProps> = ({ fetchChars }) => {
-  const dispatch = useDispatch();
-  const saved = useSelector(selectSearch);
+const Search: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const saved = useAppSelector(selectSearch);
   const [searchValue, setSearchValue] = useState(saved || '');
   const search = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    const curInput = search.current as HTMLInputElement;
     return () => {
-      if (search.current) {
-        dispatch(addSearch(search.current.value));
+      if (curInput) {
+        dispatch(addSearch(curInput.value));
       }
     };
-  });
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const searchParam: string = e.target.value;
@@ -29,7 +30,7 @@ const Search: React.FC<SearchProps> = ({ fetchChars }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    fetchChars(searchValue);
+    // fetchChars(searchValue);
   };
 
   return (

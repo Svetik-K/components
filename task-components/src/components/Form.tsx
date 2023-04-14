@@ -2,30 +2,55 @@ import React, { useState } from 'react';
 import '../styles/form.css';
 import Button from './Button';
 import countries from '../data/countries';
-import { FormCardContent } from '../utils/types';
-import { useForm } from 'react-hook-form';
+import { FormCardContent, FormCardValues } from '../utils/types';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { validateTextField, validateBirthDate } from 'utils/validators';
 
 type FormProps = {
-  onSubmit: (formData: FormCardContent) => void;
+  createCards: (cardContent: FormCardContent) => void;
 };
 
-const Form: React.FC<FormProps> = ({ onSubmit }) => {
+const Form: React.FC<FormProps> = ({ createCards }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormCardContent>();
+  } = useForm<FormCardValues>();
   const [isValid, setIsValid] = useState(false);
 
-  const onFormSubmit = (data: FormCardContent): void => {
-    onSubmit(data);
+  const handleFormSubmit: SubmitHandler<FormCardValues> = async ({
+    username,
+    surname,
+    birthday,
+    country,
+    gender,
+    image,
+    agreement,
+  }) => {
+    const imageUrl = await handleImageUpload(image as FileList);
+    const cardContent: FormCardContent = {
+      username,
+      surname,
+      birthday,
+      country,
+      gender,
+      image: imageUrl,
+      agreement,
+    };
+    createCards(cardContent);
     setIsValid(true);
     setTimeout(() => {
       reset();
       setIsValid(false);
     }, 1500);
+  };
+
+  const handleImageUpload = async (image: FileList) => {
+    if (image[0]) {
+      return URL.createObjectURL(image[0]);
+    }
+    return '';
   };
 
   const countriesList = countries.map((country) => {
@@ -37,7 +62,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
   });
 
   return (
-    <form className="form" onSubmit={handleSubmit(onFormSubmit)}>
+    <form className="form" onSubmit={handleSubmit(handleFormSubmit)}>
       <h2 className="form-title">Fill in the form below</h2>
       <div className="name-input">
         <label htmlFor="username">Name:*</label>
