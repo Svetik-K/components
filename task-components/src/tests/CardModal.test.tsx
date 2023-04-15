@@ -3,6 +3,8 @@ import { render, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ApiCard from 'components/ApiCard';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import store from 'app/store';
 
 const mockCard = {
   id: 2,
@@ -12,7 +14,11 @@ const mockCard = {
 
 describe('Api card', () => {
   test('renders a modal when API call succeeds', async () => {
-    render(<ApiCard apiCard={mockCard} />);
+    render(
+      <Provider store={store}>
+        <ApiCard apiCard={mockCard} />
+      </Provider>
+    );
     expect(screen.getByText(/Morty Smith/i)).toBeInTheDocument();
     await userEvent.click(screen.getByText(/Morty Smith/i));
     await waitFor(() => {

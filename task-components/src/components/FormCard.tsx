@@ -13,7 +13,7 @@ const FormCard: React.FC<FormCardProps> = ({ cardContent }) => {
     <div className="form-card">
       <h3 className="form-card-title">Personal card</h3>
       <div className="form-card-upper">
-        {image && <img src={image} alt="avatar" className="form-card-image" />}
+        {image && <img src={image} alt={username} className="form-card-image" />}
         <div>
           <p className="form-card-name">{username}</p>
           <p className="form-card-surname">{surname}</p>

@@ -1,13 +1,19 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import store from 'app/store';
 import Form from 'components/Form';
+import { Provider } from 'react-redux';
 
 const onSubmitMock = jest.fn();
 const file = new File(['cat'], 'cat.jpg', { type: 'image/jpeg' });
 
 describe('form', () => {
   it('renders all content of the form', () => {
-    render(<Form createCards={onSubmitMock} />);
+    render(
+      <Provider store={store}>
+        <Form createCards={onSubmitMock} />
+      </Provider>
+    );
     expect(screen.getByRole('heading', { name: 'Fill in the form below' })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Name:*' })).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Surname:*' })).toBeInTheDocument();
@@ -31,7 +37,11 @@ describe('form', () => {
   });
 
   it('renders all error messages when submit an empty form', async () => {
-    render(<Form createCards={onSubmitMock} />);
+    render(
+      <Provider store={store}>
+        <Form createCards={onSubmitMock} />
+      </Provider>
+    );
     const button = screen.getByRole('button', { name: 'Submit' });
     fireEvent.click(button);
     await screen.findByText('Please enter your name');
@@ -44,7 +54,11 @@ describe('form', () => {
   });
 
   it('should show error message if name input contains numbers', async () => {
-    render(<Form createCards={onSubmitMock} />);
+    render(
+      <Provider store={store}>
+        <Form createCards={onSubmitMock} />
+      </Provider>
+    );
     const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
     fireEvent.change(nameInput, { target: { value: '918739yiqyuyqi' } });
     const button = screen.getByRole('button', { name: 'Submit' });
@@ -53,7 +67,11 @@ describe('form', () => {
   });
 
   it('should show error message if surname input contains numbers', async () => {
-    render(<Form createCards={onSubmitMock} />);
+    render(
+      <Provider store={store}>
+        <Form createCards={onSubmitMock} />
+      </Provider>
+    );
     const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
     fireEvent.change(surnameInput, { target: { value: 'ibwe93b46bw8jogw' } });
     const button = screen.getByRole('button', { name: 'Submit' });
@@ -62,7 +80,11 @@ describe('form', () => {
   });
 
   it("should show error message if date is more than today's date", async () => {
-    render(<Form createCards={onSubmitMock} />);
+    render(
+      <Provider store={store}>
+        <Form createCards={onSubmitMock} />
+      </Provider>
+    );
     const birthdate = screen.getByLabelText('Date of birth:*');
     fireEvent.change(birthdate, { target: { value: '2023-10-26' } });
     const button = screen.getByRole('button', { name: 'Submit' });
@@ -71,7 +93,11 @@ describe('form', () => {
   });
 
   it('no errors shown after the fields have been filled with relevant data', () => {
-    render(<Form createCards={onSubmitMock} />);
+    render(
+      <Provider store={store}>
+        <Form createCards={onSubmitMock} />
+      </Provider>
+    );
     const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
     userEvent.type(nameInput, 'Michaella');
     const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
@@ -100,7 +126,11 @@ describe('form', () => {
   });
 
   it('onSubmit is called after submitting relevant data, save message shown, a card is created', () => {
-    render(<Form createCards={onSubmitMock} />);
+    render(
+      <Provider store={store}>
+        <Form createCards={onSubmitMock} />
+      </Provider>
+    );
     const nameInput = screen.getByRole('textbox', { name: 'Name:*' });
     userEvent.type(nameInput, 'Alexandra');
     const surnameInput = screen.getByRole('textbox', { name: 'Surname:*' });
@@ -121,7 +151,7 @@ describe('form', () => {
       expect(onSubmitMock).toBeCalled();
       expect(screen.getByText(/data have been saved/i)).toBeInTheDocument();
       expect(screen.getByText(/personal card/i)).toBeInTheDocument();
-      expect(screen.getByAltText(/avatar/i)).toBeInTheDocument();
+      expect(screen.getByAltText(/Alexandra/i)).toBeInTheDocument();
       expect(screen.getByText(/Alexandra/i)).toBeInTheDocument();
       expect(screen.getByText(/Helmquist/i)).toBeInTheDocument();
       expect(screen.getByText(/Female/i)).toBeInTheDocument();

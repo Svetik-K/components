@@ -2,6 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import FormCardsList from 'components/FormCardsList';
 import { FormCardContent } from 'utils/types';
+import { Provider } from 'react-redux';
+import store from 'app/store';
 
 const newCards: FormCardContent[] = [
   {
@@ -26,7 +28,11 @@ const newCards: FormCardContent[] = [
 
 describe('cards with data from the form', () => {
   it('renders only cards from the passed list', () => {
-    render(<FormCardsList cards={newCards} />);
+    render(
+      <Provider store={store}>
+        <FormCardsList cards={newCards} />
+      </Provider>
+    );
     expect(screen.getByText(/Holms/i)).toBeInTheDocument();
     expect(screen.getByText(/Sweden/i)).toBeInTheDocument();
     expect(screen.getByText(/2000-04-25/i)).toBeInTheDocument();
