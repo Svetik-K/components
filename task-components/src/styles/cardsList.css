@@ -8,19 +8,3 @@
   column-gap: 20px;
   row-gap: 20px;
 }
-
-.not-found {
-  width: 940px;
-  height: 500px;
-  background: url(../../public/assets/images/rick.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-top: 30px;
-}
-
-.no-matches {
-  font-size: 3.2rem;
-  font-weight: 500;
-  text-align: center;
-  color: #34FE0A;
-}

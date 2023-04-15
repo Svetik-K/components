@@ -4,10 +4,6 @@ import { addSearch, selectSearch } from '../slices/searchSlice';
 import '../styles/search.css';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 
-// type SearchProps = {
-//   fetchChars: (value: string) => void;
-// };
-
 const Search: React.FC = () => {
   const dispatch = useAppDispatch();
   const saved = useAppSelector(selectSearch);
