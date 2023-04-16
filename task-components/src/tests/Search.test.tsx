@@ -6,8 +6,6 @@ import App from 'App';
 import { Provider } from 'react-redux';
 import store from 'app/store';
 
-// const fetchChars = jest.fn();
-
 describe('Search field', () => {
   it('the value is entered in the search field', async () => {
     render(

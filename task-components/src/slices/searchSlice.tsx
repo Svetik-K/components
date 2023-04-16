@@ -16,14 +16,11 @@ export const searchSlice = createSlice({
     addSearch: (state, action: PayloadAction<string>) => {
       state.value = action.payload;
     },
-    deleteSearch: (state) => {
-      state.value = '';
-    },
   },
 });
 
 export const selectSearch = (state: RootState) => state.search.value;
 
-export const { addSearch, deleteSearch } = searchSlice.actions;
+export const { addSearch } = searchSlice.actions;
 
 export default searchSlice.reducer;

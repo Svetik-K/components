@@ -148,7 +148,7 @@ describe('form', () => {
     const button = screen.getByRole('button', { name: 'Submit' });
     userEvent.click(button);
     waitFor(() => {
-      expect(onSubmitMock).toBeCalled();
+      expect(onSubmitMock).toHaveBeenCalledTimes(1);
       expect(screen.getByText(/data have been saved/i)).toBeInTheDocument();
       expect(screen.getByText(/personal card/i)).toBeInTheDocument();
       expect(screen.getByAltText(/Alexandra/i)).toBeInTheDocument();
@@ -157,6 +157,11 @@ describe('form', () => {
       expect(screen.getByText(/Female/i)).toBeInTheDocument();
       expect(screen.getByText(/2012-06-14/i)).toBeInTheDocument();
       expect(screen.getByText(/Japan/i)).toBeInTheDocument();
+      expect(nameInput).toHaveDisplayValue('');
+      expect(surnameInput).toHaveDisplayValue('');
+      expect(gender).not.toBeChecked();
+      expect(agreement).not.toBeChecked();
     });
+    expect(screen.queryByText(/data have been saved/i)).not.toBeInTheDocument();
   });
 });
